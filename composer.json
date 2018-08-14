@@ -1,0 +1,51 @@
+{
+    "name": "airtimerewards/ar-connect-sdk",
+    "type": "library",
+    "license": "MIT",
+    "description": "PHP SDK for using AR Connect.",
+    "homepage": "https://www.airtimerewards.co.uk/connect",
+    "authors": [
+        {
+            "name": "Rick Ogden",
+            "email": "rick@airtimerewards.com"
+        },
+        {
+            "name": "Jaik Dean",
+            "email": "jaik@airtimerewards.com"
+        }
+    ],
+    "config": {
+        "preferred-install": {
+            "*": "dist"
+        },
+        "sort-packages": true
+    },
+    "autoload": {
+        "psr-4": {
+            "AirtimeRewards\\ARConnect\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "AirtimeRewards\\ARConnect\\": "tests/"
+        }
+    },
+    "require": {
+        "php": "^7.1",
+        "guzzlehttp/guzzle": "^6.3",
+        "moneyphp/money": "^3.0",
+        "psr/log": "^1.0"
+    },
+    "require-dev": {
+        "friendsofphp/php-cs-fixer": "^2.12",
+        "phpunit/phpunit": "^7.0"
+    },
+    "scripts": {
+        "fix": [
+            "vendor/bin/php-cs-fixer fix"
+        ],
+        "test": [
+            "vendor/bin/phpunit"
+        ]
+    }
+}

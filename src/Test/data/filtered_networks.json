@@ -1,0 +1,21 @@
+{
+    "_embedded": {
+        "networks": [
+            {
+                "brand": "O2",
+                "id": "6efa2e06-3607-46c5-a722-6da971295edf",
+                "subscription_types": [
+                    "POSTPAID"
+                ],
+                "_links": {
+                    "self": {
+                        "href": "\/v1\/networks\/6efa2e06-3607-46c5-a722-6da971295edf"
+                    },
+                    "credit_types": {
+                        "href": "\/v1\/networks\/6efa2e06-3607-46c5-a722-6da971295edf\/credit-types"
+                    }
+                }
+            }
+        ]
+    }
+}

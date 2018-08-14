@@ -1,0 +1,27 @@
+{
+    "status": "PENDING",
+    "client_reference": "ref5",
+    "created_at": "2018-07-25T08:49:44+00:00",
+    "credit_value": {
+        "amount": 1000,
+        "currency": "GBP"
+    },
+    "id": "8b617efa-de76-483d-bf99-9e4de0ce54e3",
+    "msisdn": "447987654322",
+    "network": "15532f47-7834-4da6-b887-d22de12aadfb",
+    "pin_based": false,
+    "pin_code": null,
+    "pin_ivr": null,
+    "send_sms_confirmation": true,
+    "sms_confirmation_sent": false,
+    "subscription_type": "POSTPAID",
+    "type": "BALANCE",
+    "_links": {
+        "self": {
+            "href": "/v1/credits/8b617efa-de76-483d-bf99-9e4de0ce54e3"
+        },
+        "environment": {
+            "href": "/v1/environments/8a9ab413-94fc-48a1-9889-59b94ca397bf"
+        }
+    }
+}

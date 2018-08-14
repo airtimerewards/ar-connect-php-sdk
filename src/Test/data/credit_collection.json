@@ -1,0 +1,156 @@
+{
+    "page": 1,
+    "limit": 50,
+    "pages": 1,
+    "total": 5,
+    "_links": {
+        "self": {
+            "href": "/v1/environments/8a9ab413-94fc-48a1-9889-59b94ca397bf/credits?page=1&limit=50"
+        },
+        "first": {
+            "href": "/v1/environments/8a9ab413-94fc-48a1-9889-59b94ca397bf/credits?page=1&limit=50"
+        },
+        "last": {
+            "href": "/v1/environments/8a9ab413-94fc-48a1-9889-59b94ca397bf/credits?page=1&limit=50"
+        }
+    },
+    "_embedded": {
+        "credits": [
+            {
+                "status": "PENDING",
+                "client_reference": "ref5",
+                "created_at": "2018-07-25T08:49:44+00:00",
+                "credit_value": {
+                    "amount": 1000,
+                    "currency": "GBP"
+                },
+                "id": "8b617efa-de76-483d-bf99-9e4de0ce54e3",
+                "msisdn": "447987654322",
+                "network": "15532f47-7834-4da6-b887-d22de12aadfb",
+                "pin_based": false,
+                "pin_code": null,
+                "pin_ivr": null,
+                "send_sms_confirmation": false,
+                "sms_confirmation_sent": false,
+                "subscription_type": "POSTPAID",
+                "type": "BALANCE",
+                "_links": {
+                    "self": {
+                        "href": "/v1/credits/8b617efa-de76-483d-bf99-9e4de0ce54e3"
+                    },
+                    "environment": {
+                        "href": "/v1/environments/8a9ab413-94fc-48a1-9889-59b94ca397bf"
+                    }
+                }
+            },
+            {
+                "status": "COMPLETE",
+                "client_reference": "ref4",
+                "created_at": "2018-07-24T09:53:42+00:00",
+                "credit_value": {
+                    "amount": 1000,
+                    "currency": "GBP"
+                },
+                "id": "8b5f92de-e6f9-4a23-9b0d-dcd007e685d1",
+                "msisdn": "447987654322",
+                "network": "15532f47-7834-4da6-b887-d22de12aadfb",
+                "pin_based": false,
+                "pin_code": null,
+                "pin_ivr": null,
+                "send_sms_confirmation": false,
+                "sms_confirmation_sent": false,
+                "subscription_type": "POSTPAID",
+                "type": "BALANCE",
+                "_links": {
+                    "self": {
+                        "href": "/v1/credits/8b5f92de-e6f9-4a23-9b0d-dcd007e685d1"
+                    },
+                    "environment": {
+                        "href": "/v1/environments/8a9ab413-94fc-48a1-9889-59b94ca397bf"
+                    }
+                }
+            },
+            {
+                "status": "FAILED",
+                "client_reference": "ref3",
+                "created_at": "2018-07-24T09:46:30+00:00",
+                "credit_value": {
+                    "amount": 1000,
+                    "currency": "GBP"
+                },
+                "id": "8b5f904c-5ec0-44d3-8007-ae2c2a7fc8dd",
+                "msisdn": "447987654322",
+                "network": "15532f47-7834-4da6-b887-d22de12aadfb",
+                "pin_based": false,
+                "pin_code": null,
+                "pin_ivr": null,
+                "send_sms_confirmation": false,
+                "sms_confirmation_sent": false,
+                "subscription_type": "POSTPAID",
+                "type": "BALANCE",
+                "_links": {
+                    "self": {
+                        "href": "/v1/credits/8b5f904c-5ec0-44d3-8007-ae2c2a7fc8dd"
+                    },
+                    "environment": {
+                        "href": "/v1/environments/8a9ab413-94fc-48a1-9889-59b94ca397bf"
+                    }
+                }
+            },
+            {
+                "status": "FAILED",
+                "client_reference": "ref2",
+                "created_at": "2018-07-24T08:15:29+00:00",
+                "credit_value": {
+                    "amount": 1000,
+                    "currency": "GBP"
+                },
+                "id": "8b5f6fbf-d3cd-4b18-a046-7df8afdfcf61",
+                "msisdn": "447987654322",
+                "network": "15532f47-7834-4da6-b887-d22de12aadfb",
+                "pin_based": false,
+                "pin_code": null,
+                "pin_ivr": null,
+                "send_sms_confirmation": false,
+                "sms_confirmation_sent": false,
+                "subscription_type": "POSTPAID",
+                "type": "BALANCE",
+                "_links": {
+                    "self": {
+                        "href": "/v1/credits/8b5f6fbf-d3cd-4b18-a046-7df8afdfcf61"
+                    },
+                    "environment": {
+                        "href": "/v1/environments/8a9ab413-94fc-48a1-9889-59b94ca397bf"
+                    }
+                }
+            },
+            {
+                "status": "CANCELED",
+                "client_reference": "ref1",
+                "created_at": "2018-07-20T14:48:56+00:00",
+                "credit_value": {
+                    "amount": 10,
+                    "currency": "GBP"
+                },
+                "id": "8b57f085-54cf-4cb8-8b0c-d2db2eb6f335",
+                "msisdn": "447987654322",
+                "network": "15532f47-7834-4da6-b887-d22de12aadfb",
+                "pin_based": false,
+                "pin_code": null,
+                "pin_ivr": null,
+                "send_sms_confirmation": false,
+                "sms_confirmation_sent": false,
+                "subscription_type": "POSTPAID",
+                "type": "BALANCE",
+                "_links": {
+                    "self": {
+                        "href": "/v1/credits/8b57f085-54cf-4cb8-8b0c-d2db2eb6f335"
+                    },
+                    "environment": {
+                        "href": "/v1/environments/8a9ab413-94fc-48a1-9889-59b94ca397bf"
+                    }
+                }
+            }
+        ]
+    }
+}

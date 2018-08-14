@@ -1,0 +1,689 @@
+{
+    "_embedded": {
+        "networks": [
+            {
+                "brand": "3",
+                "id": "96ef03d9-ae5e-4ee6-96aa-9dd207274b77",
+                "subscription_types": [
+                    "POSTPAID",
+                    "PREPAID"
+                ],
+                "_links": {
+                    "self": {
+                        "href": "\/v1\/networks\/96ef03d9-ae5e-4ee6-96aa-9dd207274b77"
+                    },
+                    "credit_types": {
+                        "href": "\/v1\/networks\/96ef03d9-ae5e-4ee6-96aa-9dd207274b77\/credit-types"
+                    }
+                }
+            },
+            {
+                "brand": "EE",
+                "id": "c0cdf313-bc17-4696-9236-2c41e1847b38",
+                "subscription_types": [
+                    "POSTPAID",
+                    "PREPAID"
+                ],
+                "_links": {
+                    "self": {
+                        "href": "\/v1\/networks\/c0cdf313-bc17-4696-9236-2c41e1847b38"
+                    },
+                    "credit_types": {
+                        "href": "\/v1\/networks\/c0cdf313-bc17-4696-9236-2c41e1847b38\/credit-types"
+                    }
+                }
+            },
+            {
+                "brand": "O2",
+                "id": "6efa2e06-3607-46c5-a722-6da971295edf",
+                "subscription_types": [
+                    "POSTPAID",
+                    "PREPAID"
+                ],
+                "_links": {
+                    "self": {
+                        "href": "\/v1\/networks\/6efa2e06-3607-46c5-a722-6da971295edf"
+                    },
+                    "credit_types": {
+                        "href": "\/v1\/networks\/6efa2e06-3607-46c5-a722-6da971295edf\/credit-types"
+                    }
+                }
+            },
+            {
+                "brand": "Vodafone",
+                "id": "e75e2957-fccf-41eb-9b25-33cf5121dfd7",
+                "subscription_types": [
+                    "POSTPAID",
+                    "PREPAID"
+                ],
+                "_links": {
+                    "self": {
+                        "href": "\/v1\/networks\/e75e2957-fccf-41eb-9b25-33cf5121dfd7"
+                    },
+                    "credit_types": {
+                        "href": "\/v1\/networks\/e75e2957-fccf-41eb-9b25-33cf5121dfd7\/credit-types"
+                    }
+                }
+            },
+            {
+                "brand": "1pMobile",
+                "id": "50bfbe80-1913-4afe-9921-d115394efaa8",
+                "subscription_types": [
+                    "POSTPAID",
+                    "PREPAID"
+                ],
+                "_links": {
+                    "self": {
+                        "href": "\/v1\/networks\/50bfbe80-1913-4afe-9921-d115394efaa8"
+                    },
+                    "credit_types": {
+                        "href": "\/v1\/networks\/50bfbe80-1913-4afe-9921-d115394efaa8\/credit-types"
+                    }
+                }
+            },
+            {
+                "brand": "Airwave Smart Mobile",
+                "id": "13a510cb-3e57-40ff-994d-50ba194406ec",
+                "subscription_types": [
+                    "POSTPAID",
+                    "PREPAID"
+                ],
+                "_links": {
+                    "self": {
+                        "href": "\/v1\/networks\/13a510cb-3e57-40ff-994d-50ba194406ec"
+                    },
+                    "credit_types": {
+                        "href": "\/v1\/networks\/13a510cb-3e57-40ff-994d-50ba194406ec\/credit-types"
+                    }
+                }
+            },
+            {
+                "brand": "Anywhere Sim",
+                "id": "78a8b406-a2a1-41df-91c1-cb0794cb7a6d",
+                "subscription_types": [
+                    "POSTPAID",
+                    "PREPAID"
+                ],
+                "_links": {
+                    "self": {
+                        "href": "\/v1\/networks\/78a8b406-a2a1-41df-91c1-cb0794cb7a6d"
+                    },
+                    "credit_types": {
+                        "href": "\/v1\/networks\/78a8b406-a2a1-41df-91c1-cb0794cb7a6d\/credit-types"
+                    }
+                }
+            },
+            {
+                "brand": "Asda Mobile",
+                "id": "5a75688a-c92b-41d8-8c45-4e7d92fe867c",
+                "subscription_types": [
+                    "PREPAID"
+                ],
+                "_links": {
+                    "self": {
+                        "href": "\/v1\/networks\/5a75688a-c92b-41d8-8c45-4e7d92fe867c"
+                    },
+                    "credit_types": {
+                        "href": "\/v1\/networks\/5a75688a-c92b-41d8-8c45-4e7d92fe867c\/credit-types"
+                    }
+                }
+            },
+            {
+                "brand": "Auracall Travel Talk",
+                "id": "b222b37f-d33e-4773-a34e-b338550f81ff",
+                "subscription_types": [
+                    "POSTPAID",
+                    "PREPAID"
+                ],
+                "_links": {
+                    "self": {
+                        "href": "\/v1\/networks\/b222b37f-d33e-4773-a34e-b338550f81ff"
+                    },
+                    "credit_types": {
+                        "href": "\/v1\/networks\/b222b37f-d33e-4773-a34e-b338550f81ff\/credit-types"
+                    }
+                }
+            },
+            {
+                "brand": "Axis Telecom",
+                "id": "66436cfc-6f53-44ea-bc0e-15097589ec1e",
+                "subscription_types": [
+                    "POSTPAID",
+                    "PREPAID"
+                ],
+                "_links": {
+                    "self": {
+                        "href": "\/v1\/networks\/66436cfc-6f53-44ea-bc0e-15097589ec1e"
+                    },
+                    "credit_types": {
+                        "href": "\/v1\/networks\/66436cfc-6f53-44ea-bc0e-15097589ec1e\/credit-types"
+                    }
+                }
+            },
+            {
+                "brand": "CTExcelbiz",
+                "id": "235ac432-ca6c-48ab-953e-0aa0acaa28c6",
+                "subscription_types": [
+                    "POSTPAID",
+                    "PREPAID"
+                ],
+                "_links": {
+                    "self": {
+                        "href": "\/v1\/networks\/235ac432-ca6c-48ab-953e-0aa0acaa28c6"
+                    },
+                    "credit_types": {
+                        "href": "\/v1\/networks\/235ac432-ca6c-48ab-953e-0aa0acaa28c6\/credit-types"
+                    }
+                }
+            },
+            {
+                "brand": "Delight Mobile",
+                "id": "6208b4e5-1348-4ef8-a0cc-7db5241e1f5f",
+                "subscription_types": [
+                    "POSTPAID",
+                    "PREPAID"
+                ],
+                "_links": {
+                    "self": {
+                        "href": "\/v1\/networks\/6208b4e5-1348-4ef8-a0cc-7db5241e1f5f"
+                    },
+                    "credit_types": {
+                        "href": "\/v1\/networks\/6208b4e5-1348-4ef8-a0cc-7db5241e1f5f\/credit-types"
+                    }
+                }
+            },
+            {
+                "brand": "Digital Phone",
+                "id": "68c0f2ea-b9eb-47c7-b9cd-afaccfbfe6b7",
+                "subscription_types": [
+                    "POSTPAID",
+                    "PREPAID"
+                ],
+                "_links": {
+                    "self": {
+                        "href": "\/v1\/networks\/68c0f2ea-b9eb-47c7-b9cd-afaccfbfe6b7"
+                    },
+                    "credit_types": {
+                        "href": "\/v1\/networks\/68c0f2ea-b9eb-47c7-b9cd-afaccfbfe6b7\/credit-types"
+                    }
+                }
+            },
+            {
+                "brand": "Econet Mobile",
+                "id": "1369b0e7-d7fe-457d-a1e8-bc1a004f3080",
+                "subscription_types": [
+                    "POSTPAID",
+                    "PREPAID"
+                ],
+                "_links": {
+                    "self": {
+                        "href": "\/v1\/networks\/1369b0e7-d7fe-457d-a1e8-bc1a004f3080"
+                    },
+                    "credit_types": {
+                        "href": "\/v1\/networks\/1369b0e7-d7fe-457d-a1e8-bc1a004f3080\/credit-types"
+                    }
+                }
+            },
+            {
+                "brand": "giffgaff",
+                "id": "edae0f5b-8f55-4775-8de1-ee561dc07de7",
+                "subscription_types": [
+                    "PREPAID"
+                ],
+                "_links": {
+                    "self": {
+                        "href": "\/v1\/networks\/edae0f5b-8f55-4775-8de1-ee561dc07de7"
+                    },
+                    "credit_types": {
+                        "href": "\/v1\/networks\/edae0f5b-8f55-4775-8de1-ee561dc07de7\/credit-types"
+                    }
+                }
+            },
+            {
+                "brand": "Go Mobile",
+                "id": "745a5729-c0e4-467b-ad36-3dc6693e0b94",
+                "subscription_types": [
+                    "POSTPAID",
+                    "PREPAID"
+                ],
+                "_links": {
+                    "self": {
+                        "href": "\/v1\/networks\/745a5729-c0e4-467b-ad36-3dc6693e0b94"
+                    },
+                    "credit_types": {
+                        "href": "\/v1\/networks\/745a5729-c0e4-467b-ad36-3dc6693e0b94\/credit-types"
+                    }
+                }
+            },
+            {
+                "brand": "HP Mobile Connect",
+                "id": "3b448927-1b3f-422b-bc56-fc745e99049c",
+                "subscription_types": [
+                    "POSTPAID",
+                    "PREPAID"
+                ],
+                "_links": {
+                    "self": {
+                        "href": "\/v1\/networks\/3b448927-1b3f-422b-bc56-fc745e99049c"
+                    },
+                    "credit_types": {
+                        "href": "\/v1\/networks\/3b448927-1b3f-422b-bc56-fc745e99049c\/credit-types"
+                    }
+                }
+            },
+            {
+                "brand": "Jump",
+                "id": "40abe112-df72-45a6-af31-5de692441aff",
+                "subscription_types": [
+                    "POSTPAID",
+                    "PREPAID"
+                ],
+                "_links": {
+                    "self": {
+                        "href": "\/v1\/networks\/40abe112-df72-45a6-af31-5de692441aff"
+                    },
+                    "credit_types": {
+                        "href": "\/v1\/networks\/40abe112-df72-45a6-af31-5de692441aff\/credit-types"
+                    }
+                }
+            },
+            {
+                "brand": "Kingdom Mobile",
+                "id": "23aee699-b6cc-40c7-9f56-0405c306d134",
+                "subscription_types": [
+                    "POSTPAID",
+                    "PREPAID"
+                ],
+                "_links": {
+                    "self": {
+                        "href": "\/v1\/networks\/23aee699-b6cc-40c7-9f56-0405c306d134"
+                    },
+                    "credit_types": {
+                        "href": "\/v1\/networks\/23aee699-b6cc-40c7-9f56-0405c306d134\/credit-types"
+                    }
+                }
+            },
+            {
+                "brand": "Krisant Telecom",
+                "id": "9a25016c-9d7d-43a2-825b-624f818b11a7",
+                "subscription_types": [
+                    "POSTPAID",
+                    "PREPAID"
+                ],
+                "_links": {
+                    "self": {
+                        "href": "\/v1\/networks\/9a25016c-9d7d-43a2-825b-624f818b11a7"
+                    },
+                    "credit_types": {
+                        "href": "\/v1\/networks\/9a25016c-9d7d-43a2-825b-624f818b11a7\/credit-types"
+                    }
+                }
+            },
+            {
+                "brand": "Lebara Mobile",
+                "id": "3c3f1c06-caad-41ac-a472-b440c4d14d8b",
+                "subscription_types": [
+                    "PREPAID"
+                ],
+                "_links": {
+                    "self": {
+                        "href": "\/v1\/networks\/3c3f1c06-caad-41ac-a472-b440c4d14d8b"
+                    },
+                    "credit_types": {
+                        "href": "\/v1\/networks\/3c3f1c06-caad-41ac-a472-b440c4d14d8b\/credit-types"
+                    }
+                }
+            },
+            {
+                "brand": "Lomo Mobile",
+                "id": "0cadc592-763d-4604-86c4-d931ad6746cc",
+                "subscription_types": [
+                    "POSTPAID",
+                    "PREPAID"
+                ],
+                "_links": {
+                    "self": {
+                        "href": "\/v1\/networks\/0cadc592-763d-4604-86c4-d931ad6746cc"
+                    },
+                    "credit_types": {
+                        "href": "\/v1\/networks\/0cadc592-763d-4604-86c4-d931ad6746cc\/credit-types"
+                    }
+                }
+            },
+            {
+                "brand": "Lycamobile",
+                "id": "68fd16de-ced5-46fe-abe8-3eabbec0d0d4",
+                "subscription_types": [
+                    "PREPAID"
+                ],
+                "_links": {
+                    "self": {
+                        "href": "\/v1\/networks\/68fd16de-ced5-46fe-abe8-3eabbec0d0d4"
+                    },
+                    "credit_types": {
+                        "href": "\/v1\/networks\/68fd16de-ced5-46fe-abe8-3eabbec0d0d4\/credit-types"
+                    }
+                }
+            },
+            {
+                "brand": "Matrix Cellular",
+                "id": "7c1c8a84-21f9-4fa5-b81f-55a66ba83803",
+                "subscription_types": [
+                    "POSTPAID",
+                    "PREPAID"
+                ],
+                "_links": {
+                    "self": {
+                        "href": "\/v1\/networks\/7c1c8a84-21f9-4fa5-b81f-55a66ba83803"
+                    },
+                    "credit_types": {
+                        "href": "\/v1\/networks\/7c1c8a84-21f9-4fa5-b81f-55a66ba83803\/credit-types"
+                    }
+                }
+            },
+            {
+                "brand": "Meem Mobile",
+                "id": "1730de4a-6269-4f93-ac54-543065035e51",
+                "subscription_types": [
+                    "POSTPAID",
+                    "PREPAID"
+                ],
+                "_links": {
+                    "self": {
+                        "href": "\/v1\/networks\/1730de4a-6269-4f93-ac54-543065035e51"
+                    },
+                    "credit_types": {
+                        "href": "\/v1\/networks\/1730de4a-6269-4f93-ac54-543065035e51\/credit-types"
+                    }
+                }
+            },
+            {
+                "brand": "MTel",
+                "id": "4f8684c5-4bf6-4d4d-9483-687d276a1ff9",
+                "subscription_types": [
+                    "POSTPAID",
+                    "PREPAID"
+                ],
+                "_links": {
+                    "self": {
+                        "href": "\/v1\/networks\/4f8684c5-4bf6-4d4d-9483-687d276a1ff9"
+                    },
+                    "credit_types": {
+                        "href": "\/v1\/networks\/4f8684c5-4bf6-4d4d-9483-687d276a1ff9\/credit-types"
+                    }
+                }
+            },
+            {
+                "brand": "Natterbox",
+                "id": "391a2663-e44d-440b-8cd4-e1576b5ebbc9",
+                "subscription_types": [
+                    "POSTPAID",
+                    "PREPAID"
+                ],
+                "_links": {
+                    "self": {
+                        "href": "\/v1\/networks\/391a2663-e44d-440b-8cd4-e1576b5ebbc9"
+                    },
+                    "credit_types": {
+                        "href": "\/v1\/networks\/391a2663-e44d-440b-8cd4-e1576b5ebbc9\/credit-types"
+                    }
+                }
+            },
+            {
+                "brand": "NordTelekom",
+                "id": "965d6ca9-e375-452f-85c2-6c9c265d7b26",
+                "subscription_types": [
+                    "POSTPAID",
+                    "PREPAID"
+                ],
+                "_links": {
+                    "self": {
+                        "href": "\/v1\/networks\/965d6ca9-e375-452f-85c2-6c9c265d7b26"
+                    },
+                    "credit_types": {
+                        "href": "\/v1\/networks\/965d6ca9-e375-452f-85c2-6c9c265d7b26\/credit-types"
+                    }
+                }
+            },
+            {
+                "brand": "Now PAYG",
+                "id": "e965c5cb-56dd-4724-899c-0ce0dd948ce1",
+                "subscription_types": [
+                    "PREPAID"
+                ],
+                "_links": {
+                    "self": {
+                        "href": "\/v1\/networks\/e965c5cb-56dd-4724-899c-0ce0dd948ce1"
+                    },
+                    "credit_types": {
+                        "href": "\/v1\/networks\/e965c5cb-56dd-4724-899c-0ce0dd948ce1\/credit-types"
+                    }
+                }
+            },
+            {
+                "brand": "Orange",
+                "id": "1a8b8c88-da98-4621-9837-47d0d5a5b36f",
+                "subscription_types": [
+                    "POSTPAID",
+                    "PREPAID"
+                ],
+                "_links": {
+                    "self": {
+                        "href": "\/v1\/networks\/1a8b8c88-da98-4621-9837-47d0d5a5b36f"
+                    },
+                    "credit_types": {
+                        "href": "\/v1\/networks\/1a8b8c88-da98-4621-9837-47d0d5a5b36f\/credit-types"
+                    }
+                }
+            },
+            {
+                "brand": "Pebble Mobile Network",
+                "id": "ab7503e2-d8dd-46e8-a1e6-1328ed68ec4c",
+                "subscription_types": [
+                    "POSTPAID",
+                    "PREPAID"
+                ],
+                "_links": {
+                    "self": {
+                        "href": "\/v1\/networks\/ab7503e2-d8dd-46e8-a1e6-1328ed68ec4c"
+                    },
+                    "credit_types": {
+                        "href": "\/v1\/networks\/ab7503e2-d8dd-46e8-a1e6-1328ed68ec4c\/credit-types"
+                    }
+                }
+            },
+            {
+                "brand": "Plusnet Mobile",
+                "id": "14ea71c5-7742-47b6-8014-f9a661eac373",
+                "subscription_types": [
+                    "POSTPAID",
+                    "PREPAID"
+                ],
+                "_links": {
+                    "self": {
+                        "href": "\/v1\/networks\/14ea71c5-7742-47b6-8014-f9a661eac373"
+                    },
+                    "credit_types": {
+                        "href": "\/v1\/networks\/14ea71c5-7742-47b6-8014-f9a661eac373\/credit-types"
+                    }
+                }
+            },
+            {
+                "brand": "T-Mobile",
+                "id": "1c73dacd-10a2-434d-86ef-d677cc53d1e7",
+                "subscription_types": [
+                    "POSTPAID",
+                    "PREPAID"
+                ],
+                "_links": {
+                    "self": {
+                        "href": "\/v1\/networks\/1c73dacd-10a2-434d-86ef-d677cc53d1e7"
+                    },
+                    "credit_types": {
+                        "href": "\/v1\/networks\/1c73dacd-10a2-434d-86ef-d677cc53d1e7\/credit-types"
+                    }
+                }
+            },
+            {
+                "brand": "Talk Home Mobile",
+                "id": "4e74dbda-4b05-4fde-9145-a543dcf9fa07",
+                "subscription_types": [
+                    "POSTPAID",
+                    "PREPAID"
+                ],
+                "_links": {
+                    "self": {
+                        "href": "\/v1\/networks\/4e74dbda-4b05-4fde-9145-a543dcf9fa07"
+                    },
+                    "credit_types": {
+                        "href": "\/v1\/networks\/4e74dbda-4b05-4fde-9145-a543dcf9fa07\/credit-types"
+                    }
+                }
+            },
+            {
+                "brand": "Talkmobile",
+                "id": "88116049-e029-49a2-9e39-a31d1d2138c5",
+                "subscription_types": [
+                    "POSTPAID",
+                    "PREPAID"
+                ],
+                "_links": {
+                    "self": {
+                        "href": "\/v1\/networks\/88116049-e029-49a2-9e39-a31d1d2138c5"
+                    },
+                    "credit_types": {
+                        "href": "\/v1\/networks\/88116049-e029-49a2-9e39-a31d1d2138c5\/credit-types"
+                    }
+                }
+            },
+            {
+                "brand": "TalkTalk Mobile",
+                "id": "d9cd6dc1-2ab2-4c34-bf5e-d4d04705f5fb",
+                "subscription_types": [
+                    "POSTPAID",
+                    "PREPAID"
+                ],
+                "_links": {
+                    "self": {
+                        "href": "\/v1\/networks\/d9cd6dc1-2ab2-4c34-bf5e-d4d04705f5fb"
+                    },
+                    "credit_types": {
+                        "href": "\/v1\/networks\/d9cd6dc1-2ab2-4c34-bf5e-d4d04705f5fb\/credit-types"
+                    }
+                }
+            },
+            {
+                "brand": "Telecom Plus",
+                "id": "388befe5-0675-4715-b3ef-fd7ef72ee1f9",
+                "subscription_types": [
+                    "POSTPAID",
+                    "PREPAID"
+                ],
+                "_links": {
+                    "self": {
+                        "href": "\/v1\/networks\/388befe5-0675-4715-b3ef-fd7ef72ee1f9"
+                    },
+                    "credit_types": {
+                        "href": "\/v1\/networks\/388befe5-0675-4715-b3ef-fd7ef72ee1f9\/credit-types"
+                    }
+                }
+            },
+            {
+                "brand": "Tesco Mobile",
+                "id": "a9d8a6c3-c02b-44d6-8acc-73bb296e53c7",
+                "subscription_types": [
+                    "POSTPAID",
+                    "PREPAID"
+                ],
+                "_links": {
+                    "self": {
+                        "href": "\/v1\/networks\/a9d8a6c3-c02b-44d6-8acc-73bb296e53c7"
+                    },
+                    "credit_types": {
+                        "href": "\/v1\/networks\/a9d8a6c3-c02b-44d6-8acc-73bb296e53c7\/credit-types"
+                    }
+                }
+            },
+            {
+                "brand": "The Phone Co-op",
+                "id": "59e79c7e-c64d-4e74-a86b-2097a63d1cd8",
+                "subscription_types": [
+                    "POSTPAID",
+                    "PREPAID"
+                ],
+                "_links": {
+                    "self": {
+                        "href": "\/v1\/networks\/59e79c7e-c64d-4e74-a86b-2097a63d1cd8"
+                    },
+                    "credit_types": {
+                        "href": "\/v1\/networks\/59e79c7e-c64d-4e74-a86b-2097a63d1cd8\/credit-types"
+                    }
+                }
+            },
+            {
+                "brand": "U2i Mobile",
+                "id": "8260b318-26e4-42dd-856e-64de1e92c905",
+                "subscription_types": [
+                    "POSTPAID",
+                    "PREPAID"
+                ],
+                "_links": {
+                    "self": {
+                        "href": "\/v1\/networks\/8260b318-26e4-42dd-856e-64de1e92c905"
+                    },
+                    "credit_types": {
+                        "href": "\/v1\/networks\/8260b318-26e4-42dd-856e-64de1e92c905\/credit-types"
+                    }
+                }
+            },
+            {
+                "brand": "Vectone Mobile",
+                "id": "78d5cad3-cc9a-4ea4-9290-5e4a9d0b2d29",
+                "subscription_types": [
+                    "POSTPAID",
+                    "PREPAID"
+                ],
+                "_links": {
+                    "self": {
+                        "href": "\/v1\/networks\/78d5cad3-cc9a-4ea4-9290-5e4a9d0b2d29"
+                    },
+                    "credit_types": {
+                        "href": "\/v1\/networks\/78d5cad3-cc9a-4ea4-9290-5e4a9d0b2d29\/credit-types"
+                    }
+                }
+            },
+            {
+                "brand": "Virgin Mobile",
+                "id": "3fd3c349-0d15-41c8-b6a7-605fc9d8d5fc",
+                "subscription_types": [
+                    "POSTPAID",
+                    "PREPAID"
+                ],
+                "_links": {
+                    "self": {
+                        "href": "\/v1\/networks\/3fd3c349-0d15-41c8-b6a7-605fc9d8d5fc"
+                    },
+                    "credit_types": {
+                        "href": "\/v1\/networks\/3fd3c349-0d15-41c8-b6a7-605fc9d8d5fc\/credit-types"
+                    }
+                }
+            },
+            {
+                "brand": "White Mobile",
+                "id": "c2fea0cd-df8c-4eb8-98fc-15de3c7665f3",
+                "subscription_types": [
+                    "POSTPAID",
+                    "PREPAID"
+                ],
+                "_links": {
+                    "self": {
+                        "href": "\/v1\/networks\/c2fea0cd-df8c-4eb8-98fc-15de3c7665f3"
+                    },
+                    "credit_types": {
+                        "href": "\/v1\/networks\/c2fea0cd-df8c-4eb8-98fc-15de3c7665f3\/credit-types"
+                    }
+                }
+            }
+        ]
+    }
+}

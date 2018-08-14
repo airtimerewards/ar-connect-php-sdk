@@ -1,0 +1,19 @@
+{
+    "can_afford": false,
+    "credit_value": {
+        "amount": 1000,
+        "currency": "GBP"
+    },
+    "pre_tax": {
+        "amount": 1055,
+        "currency": "GBP"
+    },
+    "tax": {
+        "amount": 11,
+        "currency": "GBP"
+    },
+    "total": {
+        "amount": 1066,
+        "currency": "GBP"
+    }
+}
