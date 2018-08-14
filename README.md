@@ -1,7 +1,6 @@
 ![Packagist](https://img.shields.io/packagist/l/airtimerewards/ar-connect-sdk.svg)
 ![Packagist](https://img.shields.io/packagist/v/airtimerewards/ar-connect-sdk.svg)
 [![Build Status](https://travis-ci.org/airtimerewards/ar-connect-php-sdk.svg?branch=master)](https://travis-ci.org/airtimerewards/ar-connect-php-sdk)
-[![SensioLabsInsight](https://insight.sensiolabs.com/projects/5b9846fd-70a4-4dcb-89d9-354a743d235b/mini.png)](https://insight.sensiolabs.com/projects/5b9846fd-70a4-4dcb-89d9-354a743d235b)
 
 # AR Connect SDK
 
