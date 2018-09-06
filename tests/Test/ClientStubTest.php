@@ -41,9 +41,9 @@ class ClientStubTest extends TestCase
         $this->assertSame('8b617efa-de76-483d-bf99-9e4de0ce54e3', $credit->getId());
         $this->assertSame('447987654322', $credit->getMsisdn());
         $this->assertSame('15532f47-7834-4da6-b887-d22de12aadfb', $credit->getNetwork());
-        $this->assertFalse($credit->isPinBased());
-        $this->assertNull($credit->getPinCode());
-        $this->assertNull($credit->getPinIvr());
+        $this->assertTrue($credit->isPinBased());
+        $this->assertSame('1234', $credit->getPinCode());
+        $this->assertSame('03300696969', $credit->getPinIvr());
         $this->assertTrue($credit->getSendSmsConfirmation());
         $this->assertFalse($credit->getSmsConfirmationSent());
         $this->assertSame(Credit::STATUS_PENDING, $credit->getStatus());
