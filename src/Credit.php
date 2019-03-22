@@ -92,7 +92,7 @@ final class Credit implements HateoasInterface
      */
     private $createdAt;
     /**
-     * @var null|string
+     * @var string|null
      */
     private $clientReference;
 

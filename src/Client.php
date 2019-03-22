@@ -79,7 +79,7 @@ class Client
         LoggerInterface $logger,
         string $endpoint = 'https://api.connect.airtimerewards.co.uk'
     ): self {
-        $client = new GuzzleClient(['base_uri' => $endpoint, 'http_errors' => false]);
+        $client = new GuzzleClient(['base_uri' => $endpoint]);
 
         return new self($client, $apiKey, $environmentId, $logger);
     }
@@ -158,9 +158,13 @@ class Client
         array $options = [],
         array $logContext = []
     ): array {
-        // Set authorization header
-        $options['headers'] = ['Authorization' => 'Bearer '.$this->apiKey];
+        $options['headers'] = \array_merge(
+            $options['headers'] ?? [],
+            ['Authorization' => 'Bearer '.$this->apiKey]
+        );
+        $options['http_errors'] = false;
         $uri = \str_replace('{environment}', $this->environmentId, $uri);
+
         // Make the request
         $response = $this->client->request($method, $uri, $options);
 
@@ -171,11 +175,11 @@ class Client
         try {
             $data = \GuzzleHttp\json_decode((string) $response->getBody(), true);
         } catch (\InvalidArgumentException $e) {
+            $data = (string) $response->getBody();
             $this->logger->error(
                 static::LOG_RESPONSE_INVALID_JSON,
-                \array_merge($logContext, ['response_body' => (string) $response->getBody()])
+                \array_merge($logContext, ['response_body' => $data])
             );
-            $data = (string) $response->getBody();
         }
 
         if ($status < 200 || $status > 299) {
