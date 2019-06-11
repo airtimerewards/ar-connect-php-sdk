@@ -37,8 +37,10 @@
         "psr/log": "^1.0"
     },
     "require-dev": {
-        "friendsofphp/php-cs-fixer": "^2.12",
-        "phpunit/phpunit": "^7.0"
+        "alexeyshockov/guzzle-psalm-plugin": "^0.1.0",
+        "friendsofphp/php-cs-fixer": "^2.15",
+        "phpunit/phpunit": "^7.0",
+        "vimeo/psalm": "^3.4"
     },
     "scripts": {
         "fix": [

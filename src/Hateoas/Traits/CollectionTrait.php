@@ -15,6 +15,9 @@ namespace AirtimeRewards\ARConnect\Hateoas\Traits;
  */
 trait CollectionTrait
 {
+    /**
+     * @var array<int,mixed>
+     */
     protected $items = [];
 
     /**

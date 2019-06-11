@@ -131,6 +131,6 @@ final class CreditType implements HateoasInterface
         return $value->isSameCurrency($this->valueMinimum)
             && $value->greaterThanOrEqual($this->valueMinimum)
             && $value->lessThanOrEqual($this->valueMaximum)
-            && 0 === ($value->subtract($this->valueMinimum)->getAmount() % $this->valueIncrement->getAmount());
+            && $value->subtract($this->valueMinimum)->mod($this->valueIncrement)->equals(new Money('0', $value->getCurrency()));
     }
 }

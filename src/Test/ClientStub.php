@@ -31,6 +31,9 @@ class ClientStub extends Client
     protected const PATH_GET_CREDIT_TYPES_FOR_NETWORK = '/v1/networks/networkId/credit-types';
     protected const PATH_GET_CREDIT = '/v1/credits/creditId';
 
+    /**
+     * @return ClientStub
+     */
     public static function createClient(
         string $apiToken,
         string $environmentId,

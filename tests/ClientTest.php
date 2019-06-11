@@ -43,7 +43,7 @@ class ClientTest extends TestCase
      */
     private $history;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->history = [];
         $history = Middleware::history($this->history);
@@ -92,6 +92,7 @@ class ClientTest extends TestCase
         $this->assertSame(1, $credits->getPages());
         $this->assertSame(1, $credits->getPageNumber());
 
+        /** @var CreditCollection $credits2 */
         $credits2 = $credits->getFirstPage();
         $this->assertCount(5, $credits2);
         $request = $this->getLastRequest();
@@ -156,6 +157,7 @@ EOT;
         $this->assertSame('8b617efa-de76-483d-bf99-9e4de0ce54e3', $credit->getId());
         $this->assertSame('PENDING', $credit->getStatus());
         $this->assertSame('ref5', $credit->getClientReference());
+        /** @var Credit $credit2 */
         $credit2 = $this->client->getRefreshed($credit);
         $this->assertInstanceOf(Credit::class, $credit2);
         $this->assertSame('8b617efa-de76-483d-bf99-9e4de0ce54e3', $credit2->getId());

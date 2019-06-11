@@ -11,6 +11,9 @@ declare(strict_types=1);
 namespace AirtimeRewards\ARConnect\Hateoas;
 
 use AirtimeRewards\ARConnect\Client;
+use AirtimeRewards\ARConnect\Exception\FailedResponseException;
+use AirtimeRewards\ARConnect\Exception\InvalidResponseException;
+use GuzzleHttp\Exception\GuzzleException;
 
 /**
  * @author Rick Ogden <rick@airtimerewards.com>
@@ -72,6 +75,13 @@ abstract class PaginatedCollection extends HateoasCollection
         return $this->total;
     }
 
+    /**
+     * @throws FailedResponseException
+     * @throws InvalidResponseException
+     * @throws GuzzleException
+     *
+     * @return static|null
+     */
     protected function getPage(string $page)
     {
         return $this->client->getPageByRel($page, $this);

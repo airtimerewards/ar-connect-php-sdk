@@ -19,6 +19,9 @@ abstract class HateoasCollection implements \SeekableIterator, \Countable, Hateo
 {
     use HateoasLinksTrait;
 
+    /**
+     * @var int
+     */
     protected $position = 0;
 
     /**
