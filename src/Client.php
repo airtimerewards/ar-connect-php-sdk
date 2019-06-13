@@ -33,6 +33,7 @@ class Client
     protected const PATH_CREATE_CREDIT = '/v1/environments/{environment}/credits';
     protected const PATH_CREATE_QUOTE = '/v1/quote';
     protected const PATH_GET_CREDIT = '/v1/credits/{id}';
+    protected const PATH_GET_ELIGIBILITY = '/v1/environments/{environment}/eligibility/{msisdn}';
     protected const PATH_GET_NETWORKS = '/v1/networks';
     protected const PATH_GET_CREDIT_TYPES_FOR_NETWORK = '/v1/networks/{network}/credit-types';
 
@@ -120,10 +121,7 @@ class Client
         // Make the API call
         $options = (null !== $msisdn) ? ['query' => ['msisdn' => $msisdn]] : [];
 
-        try {
-            $data = $this->makeRequest('GET', self::PATH_GET_NETWORKS, $options, $logContext);
-        } catch (InvalidResponseException $e) {
-        }
+        $data = $this->makeRequest('GET', self::PATH_GET_NETWORKS, $options, $logContext);
 
         // Log a valid response
         $this->logger->info(self::LOG_RESPONSE_OK, $logContext);
@@ -378,5 +376,49 @@ class Client
         $data = $this->makeRequest('GET', (string) $self);
 
         return $resource::fromJsonArray($data);
+    }
+
+    /**
+     * @param string[] $networkIds
+     *
+     * @throws GuzzleException
+     * @throws InvalidResponseException
+     * @throws FailedResponseException
+     *
+     * @return Eligibility[]
+     */
+    public function getEligibilityForNetworkIds(string $msisdn, array $networkIds): array
+    {
+        $networks = \implode(',', $networkIds);
+        $uri = \strtr(static::PATH_GET_ELIGIBILITY, ['{msisdn}' => $msisdn]);
+        $data = $this->makeRequest('GET', $uri, [
+            'query' => ['networks' => $networks],
+        ]);
+
+        return \array_map(static function (array $item): Eligibility {
+            return Eligibility::fromJsonArray($item);
+        }, $data['_embedded']['eligibility']);
+    }
+
+    /**
+     * @param iterable<Network> $networks
+     *
+     * @throws GuzzleException
+     * @throws InvalidResponseException
+     * @throws FailedResponseException
+     *
+     * @return Eligibility[]
+     */
+    public function getEligibilityForNetworks(string $msisdn, iterable $networks): array
+    {
+        $networks = (static function (Network ...$networks): array {
+            return $networks;
+        })(...$networks);
+
+        $networkIds = \array_map(static function (Network $network): string {
+            return $network->getId();
+        }, $networks);
+
+        return $this->getEligibilityForNetworkIds($msisdn, $networkIds);
     }
 }

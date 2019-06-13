@@ -165,6 +165,23 @@ EOT;
         $this->assertSame('ref5', $credit2->getClientReference());
     }
 
+    public function testGetEligibility(): void
+    {
+        $this->appendResponse(\file_get_contents(__DIR__.'/../src/Test/data/eligibility.json'));
+        $eligibility = $this->client->getEligibilityForNetworkIds('447990099876', ['network1', 'network2']);
+        $this->assertSame(
+            '/v1/environments/foo/eligibility/447990099876?networks=network1%2Cnetwork2',
+            (string) $this->getLastRequest()->getUri()
+        );
+
+        $this->assertCount(2, $eligibility);
+        $this->assertInstanceOf(Eligibility::class, $eligibility[0]);
+        $this->assertSame('UNKNOWN', $eligibility[0]->getEligible());
+        $this->assertSame('O2', $eligibility[0]->getNetwork()->getBrand());
+        $this->assertSame('ELIGIBLE', $eligibility[1]->getEligible());
+        $this->assertSame('EE', $eligibility[0]->getNetwork()->getBrand());
+    }
+
     protected function appendResponse(string $data, int $responseCode = 200): void
     {
         $this->mock->append(new Response($responseCode, ['Content-Type' => 'application/json'], $data));
