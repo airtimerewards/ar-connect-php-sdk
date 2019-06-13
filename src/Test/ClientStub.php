@@ -110,6 +110,9 @@ class ClientStub extends Client
             case self::PATH_CREATE_CREDIT:
                 $json = \file_get_contents(__DIR__.'/data/credit_collection.json');
             break;
+            case self::PATH_GET_ELIGIBILITY:
+                $json = \file_get_contents(__DIR__.'data/eligibility.json');
+                break;
             default:
                 throw new FailedResponseException('Not found.');
         }
