@@ -179,7 +179,7 @@ EOT;
         $this->assertSame('UNKNOWN', $eligibility[0]->getEligible());
         $this->assertSame('O2', $eligibility[0]->getNetwork()->getBrand());
         $this->assertSame('ELIGIBLE', $eligibility[1]->getEligible());
-        $this->assertSame('EE', $eligibility[0]->getNetwork()->getBrand());
+        $this->assertSame('EE', $eligibility[1]->getNetwork()->getBrand());
     }
 
     protected function appendResponse(string $data, int $responseCode = 200): void
