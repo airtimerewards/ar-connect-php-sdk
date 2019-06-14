@@ -12,6 +12,7 @@ namespace AirtimeRewards\ARConnect\Test;
 
 use AirtimeRewards\ARConnect\Client;
 use AirtimeRewards\ARConnect\Credit;
+use AirtimeRewards\ARConnect\Eligibility;
 use AirtimeRewards\ARConnect\Exception\FailedResponseException;
 use AirtimeRewards\ARConnect\Network;
 use Money\Money;
@@ -110,13 +111,32 @@ class ClientStub extends Client
             case self::PATH_CREATE_CREDIT:
                 $json = \file_get_contents(__DIR__.'/data/credit_collection.json');
             break;
-            case self::PATH_GET_ELIGIBILITY:
-                $json = \file_get_contents(__DIR__.'data/eligibility.json');
-                break;
             default:
                 throw new FailedResponseException('Not found.');
         }
 
         return \GuzzleHttp\json_decode($json, true);
+    }
+
+    public function getEligibilityForNetworkIds(string $msisdn, array $networkIds): array
+    {
+        $last = (int) \mb_substr($msisdn, -1);
+
+        switch ($last % 3) {
+            case 1:
+                $eligibility = Eligibility::ELIGIBLE;
+                break;
+            case 2:
+                $eligibility = Eligibility::INELIGIBLE;
+                break;
+            default:
+                $eligibility = Eligibility::UNKNOWN;
+        }
+        $result = [];
+        foreach ($networkIds as $index => $networkId) {
+            $result[] = new Eligibility($eligibility, new Network($networkId, 'Network '.($index + 1)));
+        }
+
+        return $result;
     }
 }
