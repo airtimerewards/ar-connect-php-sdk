@@ -12,6 +12,10 @@ namespace AirtimeRewards\ARConnect;
 
 class Eligibility
 {
+    public const ELIGIBLE = 'ELIGIBLE';
+    public const INELIGIBLE = 'INELIGIBLE';
+    public const UNKNOWN = 'UNKNOWN';
+
     /**
      * @var string
      */
