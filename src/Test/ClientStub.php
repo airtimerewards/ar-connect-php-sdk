@@ -3,7 +3,7 @@
 /**
  * This file is part of the AR Connect SDK.
  *
- * © Airtime Rewards 2018
+ * © Airtime Rewards 2019
  */
 
 declare(strict_types=1);
@@ -12,6 +12,7 @@ namespace AirtimeRewards\ARConnect\Test;
 
 use AirtimeRewards\ARConnect\Client;
 use AirtimeRewards\ARConnect\Credit;
+use AirtimeRewards\ARConnect\Eligibility;
 use AirtimeRewards\ARConnect\Exception\FailedResponseException;
 use AirtimeRewards\ARConnect\Network;
 use Money\Money;
@@ -31,6 +32,9 @@ class ClientStub extends Client
     protected const PATH_GET_CREDIT_TYPES_FOR_NETWORK = '/v1/networks/networkId/credit-types';
     protected const PATH_GET_CREDIT = '/v1/credits/creditId';
 
+    /**
+     * @return ClientStub
+     */
     public static function createClient(
         string $apiToken,
         string $environmentId,
@@ -112,5 +116,27 @@ class ClientStub extends Client
         }
 
         return \GuzzleHttp\json_decode($json, true);
+    }
+
+    public function getEligibilityForNetworkIds(string $msisdn, array $networkIds): array
+    {
+        $last = (int) \mb_substr($msisdn, -1);
+
+        switch ($last % 3) {
+            case 1:
+                $eligibility = Eligibility::ELIGIBLE;
+                break;
+            case 2:
+                $eligibility = Eligibility::INELIGIBLE;
+                break;
+            default:
+                $eligibility = Eligibility::UNKNOWN;
+        }
+        $result = [];
+        foreach ($networkIds as $index => $networkId) {
+            $result[] = new Eligibility($eligibility, new Network($networkId, 'Network '.($index + 1)));
+        }
+
+        return $result;
     }
 }

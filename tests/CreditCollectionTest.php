@@ -3,7 +3,7 @@
 /**
  * This file is part of the AR Connect SDK.
  *
- * © Airtime Rewards 2018
+ * © Airtime Rewards 2019
  */
 
 declare(strict_types=1);
@@ -23,7 +23,7 @@ class CreditCollectionTest extends TestCase
      */
     private $creditCollection;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $client = Client::createClient('test', 'test', new NullLogger());
         $data = \GuzzleHttp\json_decode(\file_get_contents(__DIR__.'/../src/Test/data/credit_collection.json'), true);

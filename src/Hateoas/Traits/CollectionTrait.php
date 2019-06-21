@@ -3,7 +3,7 @@
 /**
  * This file is part of the AR Connect SDK.
  *
- * © Airtime Rewards 2018
+ * © Airtime Rewards 2019
  */
 
 declare(strict_types=1);
@@ -15,6 +15,9 @@ namespace AirtimeRewards\ARConnect\Hateoas\Traits;
  */
 trait CollectionTrait
 {
+    /**
+     * @var array<int,mixed>
+     */
     protected $items = [];
 
     /**

@@ -3,7 +3,7 @@
 /**
  * This file is part of the AR Connect SDK.
  *
- * © Airtime Rewards 2018
+ * © Airtime Rewards 2019
  */
 
 declare(strict_types=1);
@@ -18,6 +18,7 @@ use AirtimeRewards\ARConnect\Hateoas\PaginatedCollection;
 use AirtimeRewards\ARConnect\Util\MoneyConverter;
 use GuzzleHttp\Client as GuzzleClient;
 use GuzzleHttp\ClientInterface;
+use GuzzleHttp\Exception\GuzzleException;
 use Money\Money;
 use Psr\Log\LoggerInterface;
 
@@ -32,6 +33,7 @@ class Client
     protected const PATH_CREATE_CREDIT = '/v1/environments/{environment}/credits';
     protected const PATH_CREATE_QUOTE = '/v1/quote';
     protected const PATH_GET_CREDIT = '/v1/credits/{id}';
+    protected const PATH_GET_ELIGIBILITY = '/v1/environments/{environment}/eligibility/{msisdn}';
     protected const PATH_GET_NETWORKS = '/v1/networks';
     protected const PATH_GET_CREDIT_TYPES_FOR_NETWORK = '/v1/networks/{network}/credit-types';
 
@@ -108,7 +110,7 @@ class Client
      *
      * @throws FailedResponseException
      * @throws InvalidResponseException
-     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @throws GuzzleException
      */
     public function getNetworks(?string $msisdn = null): NetworkCollection
     {
@@ -118,14 +120,8 @@ class Client
 
         // Make the API call
         $options = (null !== $msisdn) ? ['query' => ['msisdn' => $msisdn]] : [];
+
         $data = $this->makeRequest('GET', self::PATH_GET_NETWORKS, $options, $logContext);
-
-        // Ensure the response contains a list of credit types by network
-        if (!\is_array($data)) {
-            $this->logger->error(self::LOG_RESPONSE_MISSING_DATA, \array_merge($logContext, ['data' => $data]));
-
-            throw new InvalidResponseException('Credit type data missing.');
-        }
 
         // Log a valid response
         $this->logger->info(self::LOG_RESPONSE_OK, $logContext);
@@ -146,9 +142,9 @@ class Client
      * @param array  $options    Guzzle request options
      * @param array  $logContext Log context
      *
-     * @throws FailedResponseException               if the request failed in an expected way
-     * @throws InvalidResponseException              if the response couldn’t be parsed
-     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @throws FailedResponseException  if the request failed in an expected way
+     * @throws InvalidResponseException if the response couldn’t be parsed
+     * @throws GuzzleException
      *
      * @return array Decoded JSON body
      */
@@ -196,6 +192,8 @@ class Client
             return $data;
         }
 
+        $this->logger->error(self::LOG_RESPONSE_MISSING_DATA, \array_merge($logContext, ['data' => $data]));
+
         throw new InvalidResponseException('Cannot parse data as JSON.');
     }
 
@@ -206,7 +204,7 @@ class Client
      *
      * @throws FailedResponseException
      * @throws InvalidResponseException
-     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @throws GuzzleException
      */
     public function getCreditTypesForNetwork(Network $network): CreditTypeCollection
     {
@@ -221,7 +219,7 @@ class Client
      *
      * @throws FailedResponseException
      * @throws InvalidResponseException
-     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @throws GuzzleException
      */
     public function getCreditTypesForNetworkId(string $networkId): CreditTypeCollection
     {
@@ -233,7 +231,7 @@ class Client
     /**
      * @throws FailedResponseException
      * @throws InvalidResponseException
-     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @throws GuzzleException
      */
     private function getCreditTypesForPath(string $path): CreditTypeCollection
     {
@@ -243,13 +241,6 @@ class Client
 
         // Make the API call
         $data = $this->makeRequest('GET', $path, [], $logContext);
-
-        // Ensure the response contains a list of credit types by network
-        if (!\is_array($data)) {
-            $this->logger->error(self::LOG_RESPONSE_MISSING_DATA, \array_merge($logContext, ['data' => $data]));
-
-            throw new InvalidResponseException('Credit type data missing.');
-        }
 
         // Log a valid response
         $this->logger->info(self::LOG_RESPONSE_OK, $logContext);
@@ -264,7 +255,7 @@ class Client
      *
      * @throws FailedResponseException
      * @throws InvalidResponseException
-     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @throws GuzzleException
      */
     public function createCredit(
         string $msisdn,
@@ -301,13 +292,6 @@ class Client
             $logContext
         );
 
-        // Ensure the response contains a credit
-        if (!\is_array($data)) {
-            $this->logger->error(static::LOG_RESPONSE_MISSING_DATA, \array_merge($logContext, ['data' => $data]));
-
-            throw new InvalidResponseException('Credit data missing.');
-        }
-
         // Log a valid response
         $this->logger->info(static::LOG_RESPONSE_OK, $logContext);
 
@@ -328,7 +312,7 @@ class Client
      *
      * @throws FailedResponseException
      * @throws InvalidResponseException
-     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @throws GuzzleException
      */
     public function getCredit(string $id): Credit
     {
@@ -343,19 +327,17 @@ class Client
         $path = \str_replace('{id}', $id, static::PATH_GET_CREDIT);
         $data = $this->makeRequest('GET', $path, [], $logContext);
 
-        // Ensure the response contains a credit
-        if (!\is_array($data)) {
-            $this->logger->error(static::LOG_RESPONSE_MISSING_DATA, \array_merge($logContext, ['data' => $data]));
-
-            throw new InvalidResponseException('Credit data missing.');
-        }
-
         // Log a valid response
         $this->logger->info(static::LOG_RESPONSE_OK, $logContext);
 
         return Credit::fromJsonArray($data);
     }
 
+    /**
+     * @throws FailedResponseException
+     * @throws GuzzleException
+     * @throws InvalidResponseException
+     */
     public function getPageByRel(string $rel, PaginatedCollection $collection): ?PaginatedCollection
     {
         $link = $collection->getLink($rel);
@@ -369,6 +351,10 @@ class Client
         $this->logger->info((string) $link, $logContext);
 
         $data = $this->makeRequest('GET', (string) $link, [], $logContext);
+
+        /**
+         * @var class-string<PaginatedCollection>
+         */
         $className = \get_class($collection);
 
         return new $className($data, $this);
@@ -380,7 +366,7 @@ class Client
      * @throws FailedResponseException
      * @throws InvalidResponseException
      * @throws UnrefreshableException
-     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @throws GuzzleException
      */
     public function getRefreshed(HateoasInterface $resource): HateoasInterface
     {
@@ -390,5 +376,49 @@ class Client
         $data = $this->makeRequest('GET', (string) $self);
 
         return $resource::fromJsonArray($data);
+    }
+
+    /**
+     * @param string[] $networkIds
+     *
+     * @throws GuzzleException
+     * @throws InvalidResponseException
+     * @throws FailedResponseException
+     *
+     * @return Eligibility[]
+     */
+    public function getEligibilityForNetworkIds(string $msisdn, array $networkIds): array
+    {
+        $networks = \implode(',', $networkIds);
+        $uri = \strtr(static::PATH_GET_ELIGIBILITY, ['{msisdn}' => $msisdn]);
+        $data = $this->makeRequest('GET', $uri, [
+            'query' => ['networks' => $networks],
+        ]);
+
+        return \array_map(static function (array $item): Eligibility {
+            return Eligibility::fromJsonArray($item);
+        }, $data['_embedded']['eligibility']);
+    }
+
+    /**
+     * @param iterable<Network> $networks
+     *
+     * @throws GuzzleException
+     * @throws InvalidResponseException
+     * @throws FailedResponseException
+     *
+     * @return Eligibility[]
+     */
+    public function getEligibilityForNetworks(string $msisdn, iterable $networks): array
+    {
+        $networks = (static function (Network ...$networks): array {
+            return $networks;
+        })(...$networks);
+
+        $networkIds = \array_map(static function (Network $network): string {
+            return $network->getId();
+        }, $networks);
+
+        return $this->getEligibilityForNetworkIds($msisdn, $networkIds);
     }
 }

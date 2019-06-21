@@ -3,7 +3,7 @@
 /**
  * This file is part of the AR Connect SDK.
  *
- * © Airtime Rewards 2018
+ * © Airtime Rewards 2019
  */
 
 declare(strict_types=1);
@@ -43,7 +43,7 @@ class ClientTest extends TestCase
      */
     private $history;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->history = [];
         $history = Middleware::history($this->history);
@@ -92,6 +92,7 @@ class ClientTest extends TestCase
         $this->assertSame(1, $credits->getPages());
         $this->assertSame(1, $credits->getPageNumber());
 
+        /** @var CreditCollection $credits2 */
         $credits2 = $credits->getFirstPage();
         $this->assertCount(5, $credits2);
         $request = $this->getLastRequest();
@@ -156,11 +157,29 @@ EOT;
         $this->assertSame('8b617efa-de76-483d-bf99-9e4de0ce54e3', $credit->getId());
         $this->assertSame('PENDING', $credit->getStatus());
         $this->assertSame('ref5', $credit->getClientReference());
+        /** @var Credit $credit2 */
         $credit2 = $this->client->getRefreshed($credit);
         $this->assertInstanceOf(Credit::class, $credit2);
         $this->assertSame('8b617efa-de76-483d-bf99-9e4de0ce54e3', $credit2->getId());
         $this->assertSame('PENDING', $credit2->getStatus());
         $this->assertSame('ref5', $credit2->getClientReference());
+    }
+
+    public function testGetEligibility(): void
+    {
+        $this->appendResponse(\file_get_contents(__DIR__.'/../src/Test/data/eligibility.json'));
+        $eligibility = $this->client->getEligibilityForNetworkIds('447990099876', ['network1', 'network2']);
+        $this->assertSame(
+            '/v1/environments/foo/eligibility/447990099876?networks=network1%2Cnetwork2',
+            (string) $this->getLastRequest()->getUri()
+        );
+
+        $this->assertCount(2, $eligibility);
+        $this->assertInstanceOf(Eligibility::class, $eligibility[0]);
+        $this->assertSame('UNKNOWN', $eligibility[0]->getEligible());
+        $this->assertSame('O2', $eligibility[0]->getNetwork()->getBrand());
+        $this->assertSame('ELIGIBLE', $eligibility[1]->getEligible());
+        $this->assertSame('EE', $eligibility[1]->getNetwork()->getBrand());
     }
 
     protected function appendResponse(string $data, int $responseCode = 200): void
