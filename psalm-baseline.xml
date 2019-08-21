@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<files psalm-version="3.4.12@86e5e50c1bb492045e70f2ebe1da3cad06e4e9b2">
+  <file src="src/ARConnectClientInterface.php">
+    <InvalidThrow occurrences="9">
+      <code>GuzzleException</code>
+      <code>GuzzleException</code>
+      <code>GuzzleException</code>
+      <code>GuzzleException</code>
+      <code>GuzzleException</code>
+      <code>GuzzleException</code>
+      <code>GuzzleException</code>
+      <code>GuzzleException</code>
+      <code>GuzzleException</code>
+    </InvalidThrow>
+  </file>
+  <file src="src/Client.php">
+    <InvalidThrow occurrences="11">
+      <code>GuzzleException</code>
+      <code>GuzzleException</code>
+      <code>GuzzleException</code>
+      <code>GuzzleException</code>
+      <code>GuzzleException</code>
+      <code>GuzzleException</code>
+      <code>GuzzleException</code>
+      <code>GuzzleException</code>
+      <code>GuzzleException</code>
+      <code>GuzzleException</code>
+      <code>GuzzleException</code>
+    </InvalidThrow>
+  </file>
+  <file src="src/Hateoas/HateoasInterface.php">
+    <MissingReturnType occurrences="1">
+      <code>fromJsonArray</code>
+    </MissingReturnType>
+  </file>
+  <file src="src/Hateoas/PaginatedCollection.php">
+    <InvalidThrow occurrences="1">
+      <code>GuzzleException</code>
+    </InvalidThrow>
+    <MissingReturnType occurrences="4">
+      <code>getNextPage</code>
+      <code>getPreviousPage</code>
+      <code>getFirstPage</code>
+      <code>getLastPage</code>
+    </MissingReturnType>
+  </file>
+</files>
