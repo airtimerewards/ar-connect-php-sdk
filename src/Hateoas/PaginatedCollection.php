@@ -10,7 +10,7 @@ declare(strict_types=1);
 
 namespace AirtimeRewards\ARConnect\Hateoas;
 
-use AirtimeRewards\ARConnect\Client;
+use AirtimeRewards\ARConnect\ARConnectClientInterface;
 use AirtimeRewards\ARConnect\Exception\FailedResponseException;
 use AirtimeRewards\ARConnect\Exception\InvalidResponseException;
 use GuzzleHttp\Exception\GuzzleException;
@@ -41,11 +41,11 @@ abstract class PaginatedCollection extends HateoasCollection
     protected $total;
 
     /**
-     * @var Client
+     * @var ARConnectClientInterface
      */
     private $client;
 
-    public function __construct(array $data, Client $client)
+    public function __construct(array $data, ARConnectClientInterface $client)
     {
         parent::__construct($data);
         $this->client = $client;

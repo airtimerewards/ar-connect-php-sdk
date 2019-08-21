@@ -10,6 +10,7 @@ declare(strict_types=1);
 
 namespace AirtimeRewards\ARConnect\Test;
 
+use AirtimeRewards\ARConnect\ARConnectClientInterface;
 use AirtimeRewards\ARConnect\Client;
 use AirtimeRewards\ARConnect\Credit;
 use AirtimeRewards\ARConnect\Eligibility;
@@ -40,7 +41,7 @@ class ClientStub extends Client
         string $environmentId,
         LoggerInterface $logger,
         string $endpoint = 'https://api.connect.airtimerewards.co.uk'
-    ): Client {
+    ): ARConnectClientInterface {
         $client = new \GuzzleHttp\Client();
 
         return new self($client, $apiToken, $environmentId, $logger);
@@ -133,6 +134,11 @@ class ClientStub extends Client
                 $eligibility = Eligibility::UNKNOWN;
         }
         $result = [];
+
+        /**
+         * @var int $index
+         * @var string $networkId
+         */
         foreach ($networkIds as $index => $networkId) {
             $result[] = new Eligibility($eligibility, new Network($networkId, 'Network '.($index + 1)));
         }

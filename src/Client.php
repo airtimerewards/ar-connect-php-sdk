@@ -28,7 +28,7 @@ use Psr\Log\LoggerInterface;
  * @author Jaik Dean <jaik@airtimerewards.com>
  * @author Rick Ogden <rick@airtimerewards.com>
  */
-class Client
+class Client implements ARConnectClientInterface
 {
     protected const PATH_CREATE_CREDIT = '/v1/environments/{environment}/credits';
     protected const PATH_CREATE_QUOTE = '/v1/quote';
@@ -80,7 +80,7 @@ class Client
         string $environmentId,
         LoggerInterface $logger,
         string $endpoint = 'https://api.connect.airtimerewards.co.uk'
-    ): self {
+    ): ARConnectClientInterface {
         $client = new GuzzleClient(['base_uri' => $endpoint]);
 
         return new self($client, $apiKey, $environmentId, $logger);
