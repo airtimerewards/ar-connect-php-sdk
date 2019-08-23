@@ -12,14 +12,9 @@ namespace AirtimeRewards\ARConnect\Hateoas\Traits;
 
 use AirtimeRewards\ARConnect\Hateoas\Link;
 
-/**
- * @author Rick Ogden <rick@airtimerewards.com>
- */
 trait HateoasLinksTrait
 {
-    /**
-     * @var Link[]
-     */
+    /** @var Link[] */
     private $links = [];
 
     /**

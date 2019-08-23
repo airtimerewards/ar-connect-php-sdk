@@ -10,9 +10,6 @@ declare(strict_types=1);
 
 namespace AirtimeRewards\ARConnect\Exception;
 
-/**
- * @author Jaik Dean <jaik@airtimerewards.com>
- */
-class InvalidResponseException extends \Exception
+final class InvalidResponseException extends \Exception
 {
 }

@@ -12,29 +12,18 @@ namespace AirtimeRewards\ARConnect;
 
 use Money\Money;
 
-/**
- * @author Rick Ogden <rick@airtimerewards.com>
- */
-class Quote
+final class Quote
 {
-    /**
-     * @var bool whether the client can afford to make the credit
-     */
+    /** @var bool whether the client can afford to make the credit */
     private $canAfford;
 
-    /**
-     * @var Money the total price less tax
-     */
+    /** @var Money the total price less tax */
     private $preTax;
 
-    /**
-     * @var Money the total tax
-     */
+    /** @var Money the total tax */
     private $taxPaid;
 
-    /**
-     * @var Money the total price inclusive of tax
-     */
+    /** @var Money the total price inclusive of tax */
     private $total;
 
     public function __construct(bool $canAfford, Money $preTax, Money $taxPaid, Money $total)

@@ -10,14 +10,9 @@ declare(strict_types=1);
 
 namespace AirtimeRewards\ARConnect\Hateoas\Traits;
 
-/**
- * @author Rick Ogden <rick@airtimerewards.com>
- */
 trait CollectionTrait
 {
-    /**
-     * @var array<int,mixed>
-     */
+    /** @var array<int,mixed> */
     protected $items = [];
 
     /**

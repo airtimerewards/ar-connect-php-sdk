@@ -13,24 +13,19 @@ namespace AirtimeRewards\ARConnect\Test;
 use AirtimeRewards\ARConnect\Credit;
 use Money\Money;
 use PHPUnit\Framework\TestCase;
-use Psr\Log\NullLogger;
 
-class ClientStubTest extends TestCase
+final class ARConnectClientStubTest extends TestCase
 {
-    /**
-     * @var ClientStub
-     */
+    /** @var ARConnectClientStub */
     protected $client;
 
-    /**
-     * @var \ReflectionMethod
-     */
+    /** @var \ReflectionMethod */
     protected $makeRequest;
 
-    protected function setUp(): void/* The :void return type declaration that should be here would cause a BC issue */
+    protected function setUp(): void
     {
-        $this->client = ClientStub::createClient('foo', 'foo', new NullLogger());
-        $this->makeRequest = new \ReflectionMethod(ClientStub::class, 'makeRequest');
+        $this->client = new ARConnectClientStub();
+        $this->makeRequest = new \ReflectionMethod(ARConnectClientStub::class, 'makeRequest');
         $this->makeRequest->setAccessible(true);
     }
 

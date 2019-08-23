@@ -12,24 +12,19 @@ namespace AirtimeRewards\ARConnect\Hateoas;
 
 use AirtimeRewards\ARConnect\Hateoas\Traits\HateoasLinksTrait;
 
-/**
- * @author Rick Ogden <rick@airtimerewards.com>
- */
 abstract class HateoasCollection implements \SeekableIterator, \Countable, HateoasInterface
 {
     use HateoasLinksTrait;
 
-    /**
-     * @var int
-     */
+    /** @var int */
     protected $position = 0;
 
     /**
      * {@inheritdoc}
      *
-     * @return HateoasCollection
+     * @return static
      */
-    public static function fromJsonArray(array $data): self
+    public static function fromJsonArray(array $data)
     {
         return new static($data);
     }

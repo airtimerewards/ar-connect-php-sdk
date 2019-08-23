@@ -10,20 +10,16 @@ declare(strict_types=1);
 
 namespace AirtimeRewards\ARConnect;
 
-class Eligibility
+final class Eligibility
 {
     public const ELIGIBLE = 'ELIGIBLE';
     public const INELIGIBLE = 'INELIGIBLE';
     public const UNKNOWN = 'UNKNOWN';
 
-    /**
-     * @var string
-     */
+    /** @var string */
     private $eligible;
 
-    /**
-     * @var Network
-     */
+    /** @var Network */
     private $network;
 
     public static function fromJsonArray(array $data): self

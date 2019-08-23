@@ -10,19 +10,12 @@ declare(strict_types=1);
 
 namespace AirtimeRewards\ARConnect\Hateoas;
 
-/**
- * @author Rick Ogden <rick@airtimerewards.com>
- */
-class Link
+final class Link
 {
-    /**
-     * @var string relation to resource
-     */
+    /** @var string relation to resource */
     private $rel;
 
-    /**
-     * @var string the URI to resource
-     */
+    /** @var string the URI to resource */
     private $href;
 
     public function __construct(string $rel, string $href)

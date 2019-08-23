@@ -15,21 +15,15 @@ use AirtimeRewards\ARConnect\Hateoas\Traits\HateoasLinksTrait;
 
 /**
  * AR Connect network instance.
- *
- * @author Jaik Dean <jaik@airtimerewards.com>
  */
 final class Network implements HateoasInterface
 {
     use HateoasLinksTrait;
 
-    /**
-     * @var string UUID string, for example '123e4567-e89b-12d3-a456-426655440000'
-     */
+    /** @var string UUID string, for example '123e4567-e89b-12d3-a456-426655440000' */
     private $id;
 
-    /**
-     * @var string human-readable title
-     */
+    /** @var string human-readable title */
     private $brand;
 
     /**

@@ -17,8 +17,6 @@ use Money\Money;
 
 /**
  * AR Connect credit type instance.
- *
- * @author Jaik Dean <jaik@airtimerewards.com>
  */
 final class CreditType implements HateoasInterface
 {
@@ -26,34 +24,22 @@ final class CreditType implements HateoasInterface
 
     public const TYPE_BALANCE = 'BALANCE';
 
-    /**
-     * @var string UUID string, for example '123e4567-e89b-12d3-a456-426655440000'
-     */
+    /** @var string UUID string, for example '123e4567-e89b-12d3-a456-426655440000' */
     private $id;
 
-    /**
-     * @var string human-readable description
-     */
+    /** @var string human-readable description */
     private $description;
 
-    /**
-     * @var string one of the ::TYPE_* constants
-     */
+    /** @var string one of the ::TYPE_* constants */
     private $type;
 
-    /**
-     * @var Money minimum value permitted
-     */
+    /** @var Money minimum value permitted */
     private $valueMinimum;
 
-    /**
-     * @var Money maximum value permitted
-     */
+    /** @var Money maximum value permitted */
     private $valueMaximum;
 
-    /**
-     * @var Money value increments permitted
-     */
+    /** @var Money value increments permitted */
     private $valueIncrement;
 
     /**

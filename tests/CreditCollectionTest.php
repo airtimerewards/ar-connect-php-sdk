@@ -13,19 +13,15 @@ namespace AirtimeRewards\ARConnect;
 use PHPUnit\Framework\TestCase;
 use Psr\Log\NullLogger;
 
-/**
- * @author Rick Ogden <rick@airtimerewards.com>
- */
-class CreditCollectionTest extends TestCase
+final class CreditCollectionTest extends TestCase
 {
-    /**
-     * @var CreditCollection
-     */
+    /** @var CreditCollection */
     private $creditCollection;
 
     protected function setUp(): void
     {
-        $client = Client::createClient('test', 'test', new NullLogger());
+        /** @var ARConnectClientInterface */
+        $client = $this->createMock(ARConnectClientInterface::class);
         $data = \GuzzleHttp\json_decode(\file_get_contents(__DIR__.'/../src/Test/data/credit_collection.json'), true);
         $this->creditCollection = new CreditCollection($data, $client);
     }
