@@ -17,8 +17,6 @@ use Money\Money;
 
 /**
  * AR Connect credit instance.
- *
- * @author Jaik Dean <jaik@airtimerewards.com>
  */
 final class Credit implements HateoasInterface
 {
@@ -32,68 +30,43 @@ final class Credit implements HateoasInterface
     public const SUBSCRIPTION_TYPE_POSTPAID = 'POSTPAID';
     public const SUBSCRIPTION_TYPE_PREPAID = 'PREPAID';
 
-    /**
-     * @var string UUID string, for example '123e4567-e89b-12d3-a456-426655440000'
-     */
+    /** @var string UUID string, for example '123e4567-e89b-12d3-a456-426655440000' */
     private $id;
 
-    /**
-     * @var string MSISDN (mobile number)
-     */
+    /** @var string MSISDN (mobile number) */
     private $msisdn;
 
-    /**
-     * @var string UUID string, for example '123e4567-e89b-12d3-a456-426655440000'
-     */
+    /** @var string UUID string, for example '123e4567-e89b-12d3-a456-426655440000' */
     private $network;
 
-    /**
-     * @var string Subscription type, one of the ::SUBSCRIPTION_TYPE_* constants
-     */
+    /** @var string Subscription type, one of the ::SUBSCRIPTION_TYPE_* constants */
     private $subscriptionType;
 
-    /**
-     * @var Money
-     */
+    /** @var Money */
     private $creditValue;
 
-    /**
-     * @var bool whether the credit is PIN-based
-     */
+    /** @var bool whether the credit is PIN-based */
     private $pinBased;
 
-    /**
-     * @var string|null PIN code
-     */
+    /** @var string|null PIN code */
     private $pinCode;
 
-    /**
-     * @var string|null PIN IVR (the number to call to redeem the credit using the PIN code)
-     */
+    /** @var string|null PIN IVR (the number to call to redeem the credit using the PIN code) */
     private $pinIvr;
 
-    /**
-     * @var bool whether a confirmation SMS should be sent to the MSISDN on success
-     */
+    /** @var bool whether a confirmation SMS should be sent to the MSISDN on success */
     private $sendSmsConfirmation;
 
-    /**
-     * @var bool whether a confirmation SMS has been sent to the MSISDN
-     */
+    /** @var bool whether a confirmation SMS has been sent to the MSISDN */
     private $smsConfirmationSent;
 
-    /**
-     * @var string one of the ::STATUS_* constants
-     */
+    /** @var string one of the ::STATUS_* constants */
     private $status;
 
-    /**
-     * @var \DateTimeImmutable when the credit was first created
-     */
+    /** @var \DateTimeImmutable when the credit was first created */
     private $createdAt;
-    /**
-     * @var string|null
-     */
+
+    /** @var string|null */
     private $clientReference;
 
     /**

@@ -10,15 +10,14 @@ declare(strict_types=1);
 
 namespace AirtimeRewards\ARConnect\Hateoas;
 
-/**
- * @author Rick Ogden <rick@airtimerewards.com>
- */
 interface HateoasInterface
 {
     /**
      * This creates a new instance of itself from a JSON decoded response.
      *
      * @param array $data decoded JSON in array format
+     *
+     * @return static
      */
     public static function fromJsonArray(array $data);
 

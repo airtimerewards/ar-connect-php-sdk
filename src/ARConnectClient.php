@@ -16,7 +16,7 @@ use AirtimeRewards\ARConnect\Exception\UnrefreshableException;
 use AirtimeRewards\ARConnect\Hateoas\HateoasInterface;
 use AirtimeRewards\ARConnect\Hateoas\PaginatedCollection;
 use AirtimeRewards\ARConnect\Util\MoneyConverter;
-use GuzzleHttp\Client as GuzzleClient;
+use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
 use GuzzleHttp\Exception\GuzzleException;
 use Money\Money;
@@ -24,53 +24,36 @@ use Psr\Log\LoggerInterface;
 
 /**
  * AR Connect API client.
- *
- * @author Jaik Dean <jaik@airtimerewards.com>
- * @author Rick Ogden <rick@airtimerewards.com>
  */
-class Client
+final class ARConnectClient implements ARConnectClientInterface
 {
-    protected const PATH_CREATE_CREDIT = '/v1/environments/{environment}/credits';
-    protected const PATH_CREATE_QUOTE = '/v1/quote';
-    protected const PATH_GET_CREDIT = '/v1/credits/{id}';
-    protected const PATH_GET_ELIGIBILITY = '/v1/environments/{environment}/eligibility/{msisdn}';
-    protected const PATH_GET_NETWORKS = '/v1/networks';
-    protected const PATH_GET_CREDIT_TYPES_FOR_NETWORK = '/v1/networks/{network}/credit-types';
+    private const PATH_CREATE_CREDIT = '/v1/environments/{environment}/credits';
+    private const PATH_GET_CREDIT = '/v1/credits/{id}';
+    private const PATH_GET_ELIGIBILITY = '/v1/environments/{environment}/eligibility/{msisdn}';
+    private const PATH_GET_NETWORKS = '/v1/networks';
+    private const PATH_GET_CREDIT_TYPES_FOR_NETWORK = '/v1/networks/{network}/credit-types';
 
-    protected const LOG_REQUEST_CREATE_CREDIT = '-> POST '.self::PATH_CREATE_CREDIT;
-    protected const LOG_REQUEST_GET_CREDITS = '-> GET '.self::PATH_CREATE_CREDIT;
-    protected const LOG_REQUEST_GET_CREDIT = '-> GET '.self::PATH_GET_CREDIT;
-    protected const LOG_REQUEST_GET_CREDIT_TYPES_FOR_MSISDN = '-> GET '.self::PATH_GET_NETWORKS;
-    protected const LOG_REQUEST_GET_CREDIT_TYPES_FOR_NETWORK = '-> GET '.self::PATH_GET_CREDIT_TYPES_FOR_NETWORK;
-    protected const LOG_RESPONSE_ERROR = '<- Error response received from AR Connect';
-    protected const LOG_RESPONSE_INVALID_JSON = '<- Invalid JSON received from AR Connect';
-    protected const LOG_RESPONSE_MISSING_DATA = '<- Missing data received from AR Connect';
-    protected const LOG_RESPONSE_OK = '<- Response OK';
+    private const LOG_REQUEST_CREATE_CREDIT = '-> POST '.self::PATH_CREATE_CREDIT;
+    private const LOG_REQUEST_GET_CREDITS = '-> GET '.self::PATH_CREATE_CREDIT;
+    private const LOG_REQUEST_GET_CREDIT = '-> GET '.self::PATH_GET_CREDIT;
+    private const LOG_REQUEST_GET_CREDIT_TYPES_FOR_MSISDN = '-> GET '.self::PATH_GET_NETWORKS;
+    private const LOG_REQUEST_GET_CREDIT_TYPES_FOR_NETWORK = '-> GET '.self::PATH_GET_CREDIT_TYPES_FOR_NETWORK;
+    private const LOG_RESPONSE_ERROR = '<- Error response received from AR Connect';
+    private const LOG_RESPONSE_INVALID_JSON = '<- Invalid JSON received from AR Connect';
+    private const LOG_RESPONSE_MISSING_DATA = '<- Missing data received from AR Connect';
+    private const LOG_RESPONSE_OK = '<- Response OK';
 
-    /**
-     * @var string API URL
-     */
-    protected $endpoint;
+    /** @var string API token */
+    private $apiKey;
 
-    /**
-     * @var string API token
-     */
-    protected $apiKey;
+    /** @var ClientInterface */
+    private $client;
 
-    /**
-     * @var ClientInterface
-     */
-    protected $client;
+    /** @var LoggerInterface */
+    private $logger;
 
-    /**
-     * @var LoggerInterface
-     */
-    protected $logger;
-
-    /**
-     * @var string
-     */
-    protected $environmentId;
+    /** @var string */
+    private $environmentId;
 
     /**
      * Intialise the Guzzle client.
@@ -81,7 +64,7 @@ class Client
         LoggerInterface $logger,
         string $endpoint = 'https://api.connect.airtimerewards.co.uk'
     ): self {
-        $client = new GuzzleClient(['base_uri' => $endpoint]);
+        $client = new Client(['base_uri' => $endpoint]);
 
         return new self($client, $apiKey, $environmentId, $logger);
     }
@@ -102,16 +85,6 @@ class Client
         $this->environmentId = $environmentId;
     }
 
-    /**
-     * Get credit types available for a MSISDN (mobile number).
-     *
-     *
-     * @param string $msisdn
-     *
-     * @throws FailedResponseException
-     * @throws InvalidResponseException
-     * @throws GuzzleException
-     */
     public function getNetworks(?string $msisdn = null): NetworkCollection
     {
         // Log the request
@@ -129,7 +102,7 @@ class Client
         return new NetworkCollection($data);
     }
 
-    protected function createLogContext(): array
+    private function createLogContext(): array
     {
         return ['request_id' => \uniqid('', true)];
     }
@@ -144,11 +117,11 @@ class Client
      *
      * @throws FailedResponseException  if the request failed in an expected way
      * @throws InvalidResponseException if the response couldn’t be parsed
-     * @throws GuzzleException
+     * @throws \Throwable & GuzzleException
      *
      * @return array Decoded JSON body
      */
-    protected function makeRequest(
+    private function makeRequest(
         string $method,
         string $uri,
         array $options = [],
@@ -197,15 +170,6 @@ class Client
         throw new InvalidResponseException('Cannot parse data as JSON.');
     }
 
-    /**
-     * Get credit types available for a network.
-     *
-     * @param Network $network The network
-     *
-     * @throws FailedResponseException
-     * @throws InvalidResponseException
-     * @throws GuzzleException
-     */
     public function getCreditTypesForNetwork(Network $network): CreditTypeCollection
     {
         $path = (string) $network->getLink('credit_types');
@@ -213,14 +177,6 @@ class Client
         return $this->getCreditTypesForPath($path);
     }
 
-    /**
-     * Get credit types available for a network ID.
-     *
-     *
-     * @throws FailedResponseException
-     * @throws InvalidResponseException
-     * @throws GuzzleException
-     */
     public function getCreditTypesForNetworkId(string $networkId): CreditTypeCollection
     {
         $path = \str_replace('{network}', $networkId, self::PATH_GET_CREDIT_TYPES_FOR_NETWORK);
@@ -231,7 +187,7 @@ class Client
     /**
      * @throws FailedResponseException
      * @throws InvalidResponseException
-     * @throws GuzzleException
+     * @throws \Throwable & GuzzleException
      */
     private function getCreditTypesForPath(string $path): CreditTypeCollection
     {
@@ -248,15 +204,6 @@ class Client
         return new CreditTypeCollection($data);
     }
 
-    /**
-     * Send credit to a MSISDN (mobile number).
-     *
-     * @param Network|string $network Network object or Network ID
-     *
-     * @throws FailedResponseException
-     * @throws InvalidResponseException
-     * @throws GuzzleException
-     */
     public function createCredit(
         string $msisdn,
         $network,
@@ -307,13 +254,6 @@ class Client
         return new CreditCollection($data, $this);
     }
 
-    /**
-     * Get a credit instance.
-     *
-     * @throws FailedResponseException
-     * @throws InvalidResponseException
-     * @throws GuzzleException
-     */
     public function getCredit(string $id): Credit
     {
         // Log the request
@@ -333,11 +273,6 @@ class Client
         return Credit::fromJsonArray($data);
     }
 
-    /**
-     * @throws FailedResponseException
-     * @throws GuzzleException
-     * @throws InvalidResponseException
-     */
     public function getPageByRel(string $rel, PaginatedCollection $collection): ?PaginatedCollection
     {
         $link = $collection->getLink($rel);
@@ -352,22 +287,12 @@ class Client
 
         $data = $this->makeRequest('GET', (string) $link, [], $logContext);
 
-        /**
-         * @var class-string<PaginatedCollection>
-         */
+        /** @var class-string<PaginatedCollection> */
         $className = \get_class($collection);
 
         return new $className($data, $this);
     }
 
-    /**
-     * This will take any resource or collection and get the latest version of it.
-     *
-     * @throws FailedResponseException
-     * @throws InvalidResponseException
-     * @throws UnrefreshableException
-     * @throws GuzzleException
-     */
     public function getRefreshed(HateoasInterface $resource): HateoasInterface
     {
         if (null === $self = $resource->getLink('self')) {
@@ -378,15 +303,6 @@ class Client
         return $resource::fromJsonArray($data);
     }
 
-    /**
-     * @param string[] $networkIds
-     *
-     * @throws GuzzleException
-     * @throws InvalidResponseException
-     * @throws FailedResponseException
-     *
-     * @return Eligibility[]
-     */
     public function getEligibilityForNetworkIds(string $msisdn, array $networkIds): array
     {
         $networks = \implode(',', $networkIds);
@@ -400,15 +316,6 @@ class Client
         }, $data['_embedded']['eligibility']);
     }
 
-    /**
-     * @param iterable<Network> $networks
-     *
-     * @throws GuzzleException
-     * @throws InvalidResponseException
-     * @throws FailedResponseException
-     *
-     * @return Eligibility[]
-     */
     public function getEligibilityForNetworks(string $msisdn, iterable $networks): array
     {
         $networks = (static function (Network ...$networks): array {

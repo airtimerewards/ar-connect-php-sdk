@@ -19,28 +19,18 @@ use Money\Money;
 use PHPUnit\Framework\TestCase;
 use Psr\Log\NullLogger;
 
-/**
- * @author Rick Ogden <rick@airtimerewards.com>
- */
-class ClientTest extends TestCase
+final class ARConnectClientTest extends TestCase
 {
-    /**
-     * @var \GuzzleHttp\Client
-     */
+    /** @var \GuzzleHttp\Client */
     private $guzzleClient;
-    /**
-     * @var Client
-     */
+
+    /** @var ARConnectClient */
     private $client;
 
-    /**
-     * @var MockHandler
-     */
+    /** @var MockHandler */
     private $mock;
 
-    /**
-     * @var array
-     */
+    /** @var array */
     private $history;
 
     protected function setUp(): void
@@ -51,7 +41,7 @@ class ClientTest extends TestCase
         $handler = HandlerStack::create($this->mock);
         $handler->push($history);
         $this->guzzleClient = new \GuzzleHttp\Client(['handler' => $handler]);
-        $this->client = new Client($this->guzzleClient, 'foo', 'foo', new NullLogger());
+        $this->client = new ARConnectClient($this->guzzleClient, 'foo', 'foo', new NullLogger());
     }
 
     public function testRequestHeaders(): void

@@ -33,9 +33,9 @@ To instantiate a client, use the factory method and pass in your environment ID 
 ```php
 <?php
 
-use AirtimeRewards\ARConnect\Client;
+use AirtimeRewards\ARConnect\ARConnectClient;
 
-$client = Client::createClient('api-key', 'environment-id', $logger);
+$client = ARConnectClient::createClient('api-key', 'environment-id', $logger);
 ```
 
 ### 3.2 Retrieving Data to Make a Credit
@@ -49,9 +49,9 @@ applicable to that mobile account.
 ```php
 <?php 
 
-use AirtimeRewards\ARConnect\Client;
+use AirtimeRewards\ARConnect\ARConnectClient;
 
-$client = Client::createClient('api-key', 'environment-id', $logger);
+$client = ARConnectClient::createClient('api-key', 'environment-id', $logger);
 
 $networks = $client->getNetworks(); // returns a collection of networks
 $filteredNetworks = $client->getNetworks('447700900000'); // returns a collection of networks for UK mobile number 07700 900 000
@@ -63,9 +63,9 @@ credit types contain information about the minimum, maximum and increments of cr
 ```php
 <?php 
 
-use AirtimeRewards\ARConnect\Client;
+use AirtimeRewards\ARConnect\ARConnectClient;
 
-$client = Client::createClient('api-key', 'environment-id', $logger);
+$client = ARConnectClient::createClient('api-key', 'environment-id', $logger);
 $creditTypes = $client->getCreditTypesForNetwork($network);
 ```
 
@@ -86,12 +86,12 @@ A credit can be applied by calling the `createCredit()` method with the followin
 ```php
 <?php 
 
-use AirtimeRewards\ARConnect\Client;
+use AirtimeRewards\ARConnect\ARConnectClient;
 use AirtimeRewards\ARConnect\Credit;
 use Money\Money;
 use Money\Currency;
 
-$client = Client::createClient('api-key', 'environment-id', $logger);
+$client = ARConnectClient::createClient('api-key', 'environment-id', $logger);
 $creditValue = new Money(1000, new Currency('GBP')); // £10 of credit
 $credit = $client->createCredit(
     '447700900000',

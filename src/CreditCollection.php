@@ -13,10 +13,7 @@ namespace AirtimeRewards\ARConnect;
 use AirtimeRewards\ARConnect\Hateoas\PaginatedCollection;
 use AirtimeRewards\ARConnect\Hateoas\Traits\CollectionTrait;
 
-/**
- * @author Rick Ogden <rick@airtimerewards.com>
- */
-class CreditCollection extends PaginatedCollection
+final class CreditCollection extends PaginatedCollection
 {
     use CollectionTrait;
 

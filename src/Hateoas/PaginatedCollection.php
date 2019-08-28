@@ -10,42 +10,29 @@ declare(strict_types=1);
 
 namespace AirtimeRewards\ARConnect\Hateoas;
 
-use AirtimeRewards\ARConnect\Client;
+use AirtimeRewards\ARConnect\ARConnectClientInterface;
 use AirtimeRewards\ARConnect\Exception\FailedResponseException;
 use AirtimeRewards\ARConnect\Exception\InvalidResponseException;
 use GuzzleHttp\Exception\GuzzleException;
 
-/**
- * @author Rick Ogden <rick@airtimerewards.com>
- */
 abstract class PaginatedCollection extends HateoasCollection
 {
-    /**
-     * @var int
-     */
+    /** @var int */
     protected $page;
 
-    /**
-     * @var int
-     */
+    /** @var int */
     protected $limit;
 
-    /**
-     * @var int
-     */
+    /** @var int */
     protected $pages;
 
-    /**
-     * @var int
-     */
+    /** @var int */
     protected $total;
 
-    /**
-     * @var Client
-     */
+    /** @var ARConnectClientInterface */
     private $client;
 
-    public function __construct(array $data, Client $client)
+    public function __construct(array $data, ARConnectClientInterface $client)
     {
         parent::__construct($data);
         $this->client = $client;
@@ -78,7 +65,7 @@ abstract class PaginatedCollection extends HateoasCollection
     /**
      * @throws FailedResponseException
      * @throws InvalidResponseException
-     * @throws GuzzleException
+     * @throws \Throwable & GuzzleException
      *
      * @return static|null
      */
@@ -87,11 +74,23 @@ abstract class PaginatedCollection extends HateoasCollection
         return $this->client->getPageByRel($page, $this);
     }
 
+    /**
+     * @return static|null
+     */
     abstract public function getNextPage();
 
+    /**
+     * @return static|null
+     */
     abstract public function getPreviousPage();
 
+    /**
+     * @return static|null
+     */
     abstract public function getFirstPage();
 
+    /**
+     * @return static|null
+     */
     abstract public function getLastPage();
 }

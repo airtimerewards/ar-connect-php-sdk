@@ -13,10 +13,7 @@ namespace AirtimeRewards\ARConnect;
 use AirtimeRewards\ARConnect\Hateoas\HateoasCollection;
 use AirtimeRewards\ARConnect\Hateoas\Traits\CollectionTrait;
 
-/**
- * @author Rick Ogden <rick@airtimerewards.com>
- */
-class CreditTypeCollection extends HateoasCollection
+final class CreditTypeCollection extends HateoasCollection
 {
     use CollectionTrait;
 

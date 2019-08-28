@@ -13,10 +13,7 @@ namespace AirtimeRewards\ARConnect\Util;
 use Money\Currency;
 use Money\Money;
 
-/**
- * @author Rick Ogden <rick@airtimerewards.com>
- */
-class MoneyConverter
+final class MoneyConverter
 {
     /**
      * Converts an array of money data to a Money object.

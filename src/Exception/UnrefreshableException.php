@@ -10,9 +10,6 @@ declare(strict_types=1);
 
 namespace AirtimeRewards\ARConnect\Exception;
 
-/**
- * @author Rick Ogden <rick@airtimerewards.com>
- */
-class UnrefreshableException extends \Exception
+final class UnrefreshableException extends \Exception
 {
 }
