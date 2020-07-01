@@ -5,7 +5,11 @@ php:
     - 7.2
     - 7.3
 
+env:
+    - GUZZLE_VERSION="^6.0"
+    - GUZZLE_VERSION="^7.0"
+
 install:
-    - composer install
+    - composer require guzzlehttp/guzzle:${GUZZLE_VERSION}
 
 script: php vendor/bin/phpunit --coverage-text
