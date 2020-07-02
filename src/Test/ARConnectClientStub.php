@@ -98,14 +98,14 @@ final class ARConnectClientStub implements ARConnectClientInterface
     public function getCredits(): CreditCollection
     {
         return CreditCollection::fromJsonArray(
-            \GuzzleHttp\json_decode(\file_get_contents(__DIR__.'/data/credit_collection.json'))
+            \GuzzleHttp\json_decode(\file_get_contents(__DIR__.'/data/credit_collection.json'), true)
         );
     }
 
     public function getCredit(string $id): Credit
     {
         return Credit::fromJsonArray(
-            \GuzzleHttp\json_decode(\file_get_contents(__DIR__.'/data/credit.json'))
+            \GuzzleHttp\json_decode(\file_get_contents(__DIR__.'/data/credit.json'), true)
         );
     }
 

@@ -19,14 +19,9 @@ final class ARConnectClientStubTest extends TestCase
     /** @var ARConnectClientStub */
     protected $client;
 
-    /** @var \ReflectionMethod */
-    protected $makeRequest;
-
     protected function setUp(): void
     {
         $this->client = new ARConnectClientStub();
-        $this->makeRequest = new \ReflectionMethod(ARConnectClientStub::class, 'makeRequest');
-        $this->makeRequest->setAccessible(true);
     }
 
     public function testGetCredit(): void
@@ -43,28 +38,5 @@ final class ARConnectClientStubTest extends TestCase
         $this->assertFalse($credit->getSmsConfirmationSent());
         $this->assertSame(Credit::STATUS_PENDING, $credit->getStatus());
         $this->assertSame(Credit::SUBSCRIPTION_TYPE_POSTPAID, $credit->getSubscriptionType());
-    }
-
-    public function testMakeRequest(): void
-    {
-        $data = $this->makeRequest('GET', '/v1/networks');
-        $this->assertCount(43, $data['_embedded']['networks']);
-        $data = $this->makeRequest('GET', '/v1/networks', ['query' => ['msisdn' => '447823221']]);
-        $this->assertCount(1, $data['_embedded']['networks']);
-        $data = $this->makeRequest('GET', '/v1/networks/networkId/credit-types');
-        $this->assertCount(2, $data['_embedded']['credit_types']);
-        $data = $this->makeRequest('GET', '/v1/quote');
-        $this->assertArrayHasKey('pre_tax', $data);
-        $data = $this->makeRequest('GET', '/v1/environments/{environment}/credits');
-        $this->assertCount(5, $data['_embedded']['credits']);
-    }
-
-    protected function makeRequest(
-        string $method,
-        string $uri,
-        array $options = [],
-        array $logContext = []
-    ): array {
-        return $this->makeRequest->invokeArgs($this->client, [$method, $uri, $options, $logContext]);
     }
 }
