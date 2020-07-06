@@ -32,12 +32,12 @@
     },
     "require": {
         "php": "^7.1",
-        "guzzlehttp/guzzle": "^6.3",
+        "guzzlehttp/guzzle": "^6.0 || ^7.0",
         "moneyphp/money": "^3.0",
         "psr/log": "^1.0"
     },
     "require-dev": {
-        "alexeyshockov/guzzle-psalm-plugin": "^0.1.0",
+        "alexeyshockov/guzzle-psalm-plugin": "^0.2",
         "friendsofphp/php-cs-fixer": "^2.15",
         "phpunit/phpunit": "^7.0",
         "vimeo/psalm": "^3.4"
