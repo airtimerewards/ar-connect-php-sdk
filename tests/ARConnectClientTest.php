@@ -19,6 +19,9 @@ use Money\Money;
 use PHPUnit\Framework\TestCase;
 use Psr\Log\NullLogger;
 
+/**
+ * @coversDefaultClass AirtimeRewards\ARConnect\ARConnectClient
+ */
 final class ARConnectClientTest extends TestCase
 {
     /** @var \GuzzleHttp\Client */
@@ -44,6 +47,9 @@ final class ARConnectClientTest extends TestCase
         $this->client = new ARConnectClient($this->guzzleClient, 'foo', 'foo', new NullLogger());
     }
 
+    /**
+     * @covers ::getNetworks
+     */
     public function testRequestHeaders(): void
     {
         $this->appendResponse(\file_get_contents(__DIR__.'/../src/Test/data/all_networks.json'));
@@ -52,6 +58,9 @@ final class ARConnectClientTest extends TestCase
         $this->assertContains('Bearer foo', $request->getHeader('Authorization'));
     }
 
+    /**
+     * @covers ::getNetworks
+     */
     public function testGetNetworks(): void
     {
         $this->appendResponse(\file_get_contents(__DIR__.'/../src/Test/data/all_networks.json'));
@@ -72,6 +81,9 @@ final class ARConnectClientTest extends TestCase
         $this->assertSame('6efa2e06-3607-46c5-a722-6da971295edf', $network->getId());
     }
 
+    /**
+     * @covers ::getCredits
+     */
     public function testGetCredits(): void
     {
         $this->appendResponse(\file_get_contents(__DIR__.'/../src/Test/data/credit_collection.json'));
@@ -89,6 +101,9 @@ final class ARConnectClientTest extends TestCase
         $this->assertSame('/v1/environments/8a9ab413-94fc-48a1-9889-59b94ca397bf/credits?page=1&limit=50', (string) $request->getUri());
     }
 
+    /**
+     * @covers ::getCreditTypesForNetworkId
+     */
     public function testGetCreditTypesForNetwork(): void
     {
         $this->appendResponse(\file_get_contents(__DIR__.'/../src/Test/data/credit_types.json'));
@@ -111,6 +126,9 @@ final class ARConnectClientTest extends TestCase
         $this->assertSame((string) $network->getLink('credit_types'), (string) $this->getLastRequest()->getUri());
     }
 
+    /**
+     * @covers ::createCredit
+     */
     public function testCreateCredit(): void
     {
         $jsonRequestBody = <<<'EOT'
@@ -138,6 +156,10 @@ EOT;
         $this->assertJsonStringEqualsJsonString($jsonRequestBody, (string) $this->getLastRequest()->getBody());
     }
 
+    /**
+     * @covers ::getCredit
+     * @covers ::getRefreshed
+     */
     public function testGetCredit(): void
     {
         $this->appendResponse(\file_get_contents(__DIR__.'/../src/Test/data/credit.json'));
@@ -155,6 +177,9 @@ EOT;
         $this->assertSame('ref5', $credit2->getClientReference());
     }
 
+    /**
+     * @covers ::getEligibilityForNetworkIds
+     */
     public function testGetEligibility(): void
     {
         $this->appendResponse(\file_get_contents(__DIR__.'/../src/Test/data/eligibility.json'));

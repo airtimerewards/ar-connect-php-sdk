@@ -14,6 +14,9 @@ use AirtimeRewards\ARConnect\Credit;
 use Money\Money;
 use PHPUnit\Framework\TestCase;
 
+/**
+ * @coversDefaultClass \AirtimeRewards\ARConnect\Test\ARConnectClientStub
+ */
 final class ARConnectClientStubTest extends TestCase
 {
     /** @var ARConnectClientStub */
@@ -24,6 +27,9 @@ final class ARConnectClientStubTest extends TestCase
         $this->client = new ARConnectClientStub();
     }
 
+    /**
+     * @covers ::getCredit
+     */
     public function testGetCredit(): void
     {
         $credit = $this->client->getCredit('foo');
