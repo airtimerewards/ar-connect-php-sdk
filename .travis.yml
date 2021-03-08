@@ -15,7 +15,6 @@ jobs:
     exclude:
         -   php: 7.1
             env: GUZZLE_VERSION="^7.0"
-    exclude:
         -   php: 8.0
             env: GUZZLE_VERSION="^6.0"
 
