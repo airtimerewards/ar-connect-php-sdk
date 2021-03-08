@@ -4,6 +4,8 @@ php:
     - 7.1
     - 7.2
     - 7.3
+    - 7.4
+    - 8.0
 
 env:
     - GUZZLE_VERSION="^6.0"
@@ -13,6 +15,9 @@ jobs:
     exclude:
         -   php: 7.1
             env: GUZZLE_VERSION="^7.0"
+    exclude:
+        -   php: 8.0
+            env: GUZZLE_VERSION="^6.0"
 
 install:
     - composer require guzzlehttp/guzzle:${GUZZLE_VERSION}
