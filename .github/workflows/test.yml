@@ -10,14 +10,19 @@ jobs:
           - guzzle-version: "^7.0"
             php-version: "7.1"
     steps:
-      - name: Setup PHP
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up PHP
         uses: shivammathur/setup-php@v2
         with:
           php-version: ${{ matrix.php-version }}
           tools: composer:v2
 
-      - name: PHPUnit
+      - name: Install packages
         run: |
           composer require guzzlehttp/guzzle:${{ matrix.guzzle-version }}
           composer update
-          php vendor/bin/phpunit --coverage-text
+
+      - name: Run PHPUnit
+        run: php vendor/bin/phpunit --coverage-text
