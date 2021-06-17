@@ -1,0 +1,20 @@
+on: [push]
+jobs:
+  phpunit:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        guzzle-version: ["^6.0", "^7.0"]
+        php-version: ["7.1", "7.2", "7.3"]
+        exclude:
+          - guzzle-version: "^7.0"
+            php-version: "7.1"
+    steps:
+      - name: PHP Unit
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php-version }}
+          tools: composer:v2
+        run: |
+          composer require guzzlehttp/guzzle:${{ matrix.guzzle-version }}
+          php vendor/bin/phpunit --coverage-text
