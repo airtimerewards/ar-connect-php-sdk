@@ -10,11 +10,12 @@ jobs:
           - guzzle-version: "^7.0"
             php-version: "7.1"
     steps:
-      - name: PHP Unit
+      - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
           php-version: ${{ matrix.php-version }}
           tools: composer:v2
+      - name: PHPUnit
         run: |
           composer require guzzlehttp/guzzle:${{ matrix.guzzle-version }}
           php vendor/bin/phpunit --coverage-text
