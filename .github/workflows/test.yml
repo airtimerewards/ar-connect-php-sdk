@@ -19,5 +19,5 @@ jobs:
       - name: PHPUnit
         run: |
           composer require guzzlehttp/guzzle:${{ matrix.guzzle-version }}
-          composer install
+          composer update
           php vendor/bin/phpunit --coverage-text
