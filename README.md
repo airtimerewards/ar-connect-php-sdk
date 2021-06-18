@@ -1,6 +1,5 @@
 ![Packagist](https://img.shields.io/packagist/l/airtimerewards/ar-connect-sdk.svg)
 ![Packagist](https://img.shields.io/packagist/v/airtimerewards/ar-connect-sdk.svg)
-[![Build Status](https://travis-ci.org/airtimerewards/ar-connect-php-sdk.svg?branch=master)](https://travis-ci.org/airtimerewards/ar-connect-php-sdk)
 
 # AR Connect SDK
 
@@ -47,7 +46,7 @@ number with the country-code prefix) `getNetworks('447700900000')` which when pa
 applicable to that mobile account.
 
 ```php
-<?php 
+<?php
 
 use AirtimeRewards\ARConnect\ARConnectClient;
 
@@ -61,7 +60,7 @@ Once the network has been selected, you can get information about what credit ty
 credit types contain information about the minimum, maximum and increments of credit values available.
 
 ```php
-<?php 
+<?php
 
 use AirtimeRewards\ARConnect\ARConnectClient;
 
@@ -84,7 +83,7 @@ A credit can be applied by calling the `createCredit()` method with the followin
  multiple times.
 
 ```php
-<?php 
+<?php
 
 use AirtimeRewards\ARConnect\ARConnectClient;
 use AirtimeRewards\ARConnect\Credit;
