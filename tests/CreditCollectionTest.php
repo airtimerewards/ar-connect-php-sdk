@@ -11,8 +11,10 @@ declare(strict_types=1);
 namespace AirtimeRewards\ARConnect;
 
 use PHPUnit\Framework\TestCase;
-use Psr\Log\NullLogger;
 
+/**
+ * @coversDefaultClass \AirtimeRewards\ARConnect\CreditCollection
+ */
 final class CreditCollectionTest extends TestCase
 {
     /** @var CreditCollection */
@@ -26,6 +28,9 @@ final class CreditCollectionTest extends TestCase
         $this->creditCollection = new CreditCollection($data, $client);
     }
 
+    /**
+     * @covers ::__construct
+     */
     public function testConstructor(): void
     {
         $this->assertInstanceOf(CreditCollection::class, $this->creditCollection);
