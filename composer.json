@@ -20,7 +20,8 @@
         },
         "sort-packages": true,
         "allow-plugins": {
-            "composer/package-versions-deprecated": true
+            "composer/package-versions-deprecated": true,
+            "ocramius/package-versions": true
         }
     },
     "autoload": {
@@ -37,7 +38,7 @@
         "php": "^7.4 || ^8.0",
         "guzzlehttp/guzzle": "^6.0 || ^7.0",
         "moneyphp/money": "^3.0 || ^4.0",
-        "psr/log": "^1.0"
+        "psr/log": "^1.0 || ^2.0 || ^3.0"
     },
     "require-dev": {
         "alexeyshockov/guzzle-psalm-plugin": "^0.3.1",
